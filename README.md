@@ -2,178 +2,165 @@
 
 ![Banner](https://generalbenmalek.github.io/generalBenmalek/benmalek/wallpaper.jpg)
 
-# THE WARRIOR CODEX
+# ⚔️ **THE WARRIOR CODEX**
+### 🧙‍♂️ *THE ULTIMATE GAME DEVELOPER BEGINNER*
 
-### THE ULTIMATE GAME DEVELOPER BEGINNER
+> *"In the age of ancients, code was unformed, shrouded by fog.  
+> A land of gray crags, ancient trees, and everlasting commits.  
+> But then there was Fire. And with Fire came Disparity..."*
 
-*"In the age of ancients, code was unformed, shrouded by fog. A land of gray crags, ancient trees, and everlasting commits. But then there was Fire. And with Fire came Disparity..."*
+[![Enter the Deeps](https://img.shields.io/badge/🔥_ENTER_THE_PORTFOLIO_-black?style=for-the-badge)](https://generalbenmalek.github.io/generalBenmalek/)
 
 ---
 
-**[ENTER THE DEEPS](https://generalbenmalek.github.io/generalBenmalek/)**
-
----
+<h1 align="center">Hey 👋 What's Up?</h1>
 
 </div>
 
+### ⚡ SKILLS & TECHNOLOGIES
 
-
-## I. THE ULTIMATE GAME DEVELOPER BEGINNER
-
-*A game is where imagination meets creation — a world shaped by the developer’s vision, guided by their own rules, and brought to life through code and creativity.*
-
-**Specializations:**
-- Game Development | Roblox Studio
-- Full-Stack Engineering | JavaScript, Python, C++
-- Mobile Forging | Flutter
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,py,cpp,dart,lua,nodejs,express,mongodb,firebase,flutter,robloxstudio,androidstudio" height="120" />
+</div>
 
 ---
 
-## II. ATTRIBUTES & STATISTICS
+### 🌐 SOCIALS
+
+<div align="center">
+  <a href="https://youtube.com/@aaayme" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Youtube&logo=youtube&color=AA0000&style=for-the-badge" height="25" alt="youtube logo" />
+  </a>
+  <a href="https://discord.com/users/aaayme" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Discord&logo=discord&color=7289DA&style=for-the-badge" height="25" alt="discord logo" />
+  </a>
+</div>
+
+---
+
+## 🧠 ATTRIBUTES & STATISTICS
 
 ### VIGOR - Hard Skills
 
 ```
-Lua                 ████████████████████░░░░░ 85
-JavaScript          ████████████████████░░░░░ 78
-Node.js             ███████████████████░░░░░░ 75
-Dart                ██████████████████░░░░░░░ 70
-C++                 ██████████████████░░░░░░░ 70
-MongoDB             ██████████████████░░░░░░░ 70
-Roblox Studio       █████████████████░░░░░░░░ 69
-Flutter             █████████████████░░░░░░░░ 65
-Python              ███████████████░░░░░░░░░░ 60
+Lua                 ████████████████████░░░░░ 85%
+JavaScript          ████████████████████░░░░░ 78%
+Node.js             ███████████████████░░░░░░ 75%
+Dart                ██████████████████░░░░░░░ 70%
+C++                 ██████████████████░░░░░░░ 70%
+MongoDB             ██████████████████░░░░░░░ 70%
+Roblox Studio       █████████████████░░░░░░░░ 69%
+Flutter             █████████████████░░░░░░░░ 65%
+Python              ███████████████░░░░░░░░░░ 60%
 ```
 
 ### MIND - Soft Skills
 
 ```
-Creativity          ████████████████████░░░░░ 80
-Problem Solving     ███████████████████░░░░░░ 75
-Adaptability        ███████████████████░░░░░░ 75
-Teamwork            ██████████████░░░░░░░░░░░ 55
-Communication       █████████████░░░░░░░░░░░░ 50
+Creativity          ████████████████████░░░░░ 80%
+Problem Solving     ███████████████████░░░░░░ 75%
+Adaptability        ███████████████████░░░░░░ 75%
+Teamwork            ██████████████░░░░░░░░░░░ 55%
+Communication       █████████████░░░░░░░░░░░░ 50%
 ```
+---
+
+## 🏰 GREAT RUNES — Projects
+
+| ⚒️ Project | 💬 Description | 🧱 Stack |
+|-------------|----------------|-----------|
+| 🧾 **YACK** | Secure digital contract system with hashing & Firebase auth. | Flutter · Firebase · Cryptography |
+| 🌪️ **World of Elements Battle Ground** | Elemental combat with ultimate modes & boss mechanics. | Roblox · Lua · Combat System |
+| 🧠 **OurJoy** | Psychological horror game through cursed surgical rooms. | Roblox · Lua · Story Puzzles |
+| 🧩 **ColorTris** | Puzzle survival game with falling colored fragments. | JS · HTML5 Canvas · CSS |
+| 📜 **The Codex Portfolio** | Interactive portfolio with skill system & game aesthetics. | HTML · CSS · JS |
 
 ---
 
-## III. GREAT RUNES - Notable Projects
+## ⚙️ ARMAMENTS & TOOLS
 
-### THE KEEPER'S ACCORD | YACK
-*Your Agreement Contract Keeper*
+<div align="center">
 
-A secure sanctum for the forging and sealing of digital contracts. Built with the ancient arts of hashing to ensure the integrity of all agreements. Future enhancements include the integration of blockchain runes and GPS verification glyphs.
+![Lua](https://img.shields.io/badge/Lua-blue?logo=lua)
+![JavaScript](https://img.shields.io/badge/JavaScript-yellow?logo=javascript)
+![Python](https://img.shields.io/badge/Python-blue?logo=python)
+![C++](https://img.shields.io/badge/C%2B%2B-blue?logo=cplusplus)
+![Dart](https://img.shields.io/badge/Dart-skyblue?logo=dart)
+![Node.js](https://img.shields.io/badge/Node.js-green?logo=nodedotjs)
+![Flutter](https://img.shields.io/badge/Flutter-blue?logo=flutter)
+![Firebase](https://img.shields.io/badge/Firebase-orange?logo=firebase)
+![MongoDB](https://img.shields.io/badge/MongoDB-green?logo=mongodb)
+![Roblox Studio](https://img.shields.io/badge/Roblox-gray?logo=roblox)
+![Git](https://img.shields.io/badge/Git-orange?logo=git)
+![VSCode](https://img.shields.io/badge/VS_Code-blue?logo=visualstudiocode)
 
-**Forged With:** Flutter | Firebase | Cryptographic Seals
-
----
-
-### ELEMENTAL DOMINION | World of Elements Battle Ground
-
-A battleground where champions wield the primal forces of nature. Multiple elemental disciplines clash in combat, each with ultimate techniques and forbidden arts. Boss encounters test the limits of mortal capability.
-
-**Forged With:** Roblox | Lua | Combat Algorithms
-
----
-
-### THE ASYLUM | OurJoy
-
-A forsaken surgical facility where reality twists upon itself. Navigate puzzles that defy logic, avoid cunningly placed traps, and face entities that should not exist. A journey into psychological horror.
-
-**Forged With:** Roblox | Environmental Storytelling | Lua
+</div>
 
 ---
 
-### THE FALLING STONES | ColorTris
-
-An ancient puzzle where colored fragments descend from the heavens. Match the patterns, clear the lines, and survive as long as your reflexes permit. The stones fall faster with each passing moment.
-
-**Forged With:** JavaScript | HTML Canvas | CSS Animations
-
----
-
-### THE CODEX ITSELF | This Portfolio
-
-An interactive grimoire chronicling the Tarnished's journey. Features an experience system for growth, a vast skill constellation, memory trials to escape cursed domains, and the falling stones puzzle integrated within.
-
-**Features of Note:**
-- Experience System | Gain power through completing trials
-- Skill Constellation | Over 100 nodes spanning the breadth of software mastery
-- Memory Trials | Card-matching challenges to escape trap encounters
-- The Falling Stones | Integrated puzzle game
-- Cursed Encounters | Random trap sections that test wit and reflexes
-- The Inventory | All achievements and artifacts collected
-- Medieval Aesthetics | Inspired by the lands of Lordran and the Lands Between
-
-**Forged With:** HTML | CSS | JavaScript | Dark Souls Aesthetics
+### 🧭 NAVIGATION THROUGH THE LANDS
+1. 🌄 **The Surface** — Begin your journey
+2. ⚫ **The Descent** — Explore the depths
+3. 🧩 **Trials of Skill** — Earn experience
+4. 🌌 **Skill Tree** — Unlock new paths
+5. ☠️ **Cursed Encounters** — Beware the traps
+6. 🔥 **The Final Realm** — Master the Codex
 
 ---
 
-## IV. ARMAMENTS & TOOLS
-
-**Languages of Power**
-
-Lua | JavaScript | Python | C++ | Dart | SQL
-
-**Frameworks & Ancient Technologies**
-
-Node.js | Flutter | MongoDB | Firebase | Roblox Studio | Express.js
-
-**Development Sanctums**
-
-Git | VS Code | Android Studio | Unity | Unreal Engine
+### 🧙‍♂️ DESIGN PHILOSOPHY
+Inspired by:
+- 🎮 *Dark Souls / Elden Ring* — Medieval progression & earned accomplishment
+- 🧠 *RuneScape* — Skill mastery & growth
+- 🃏 *Memory Trials* — Puzzle-based endurance
+- 🧱 *Tetris* — Reflex and rhythm perfection
 
 ---
 
-## V. NAVIGATION THROUGH THE LANDS
+## 📊 GitHub Insights
 
-**The Journey Unfolds:**
-
-1. **The Surface** - Begin at the welcome precipice
-2. **The Descent** - Activate the exploration ritual
-3. **Trials of Skill** - Complete challenges to earn runes of experience
-4. **The Skill Tree** - Invest runes into the constellation of mastery
-5. **Cursed Encounters** - Navigate carefully, for traps lie in wait
-6. **The Full Circuit** - Traverse all six realms of the codex
+<div align="center">
+  <img src="https://streak-stats.demolab.com?user=generalBenmalek&theme=dracula&hide_border=false&border_radius=5" height="150" />
+  <img src="https://github-profile-trophy.vercel.app/?username=generalBenmalek&theme=dracula&row=1&margin-w=10&no-bg=true&no-frame=false" height="150" />
+</div>
 
 ---
 
-## VI. SUMMON THE TARNISHED
-
-For those who would seek audience or collaboration:
-
-**Electronic Correspondence:** mohamed.aymen.benmalek@ensia.edu.dz  
-**GitHub Repository:** [github.com/your-username](https://github.com/generalBenamlek)  
-**The Living Codex:** [YOUR_LIVE_SITE_URL_HERE](https://generalbenmalek.github.io/generalBenmalek/)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/generalBenmalek/generalBenmalek/output/pacman-contribution-graph-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/generalBenmalek/generalBenmalek/output/pacman-contribution-graph.svg">
+  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/generalBenmalek/generalBenmalek/output/pacman-contribution-graph.svg">
+</picture>
 
 ---
 
-## VII. DESIGN PHILOSOPHY
-
-This codex draws inspiration from the following legendary works:
-
-**Dark Souls / Elden Ring** - The progression systems, medieval aesthetics, and sense of earned accomplishment
-
-**RuneScape** - The skill tree mechanics and character development philosophy
-
-**Classic Memory Trials** - The tradition of matching-card challenges
-
-**Tetris** - The timeless puzzle of falling blocks and pattern recognition
+<img src="https://raw.githubusercontent.com/generalBenmalek/generalBenmalek/output/snake.svg" alt="Snake animation" />
 
 ---
 
-## VIII. THE ANCIENT TEXTS
+<div align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=generalBenmalek.generalBenmalek&" />
+</div>
 
-This repository is released under the MIT License. All Tarnished are free to study and adapt these techniques.
+---
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=generalBenmalek&show_icons=true&theme=dracula&include_all_commits=true&count_private=true" height="150" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=generalBenmalek&layout=compact&langs_count=5&theme=dracula" height="150" />
+</div>
 
 ---
 
 <div align="center">
 
-### *"Foul Tarnished, in search of the Elden Ring. Emboldened by the flame of ambition."*
+### *"Foul Tarnished, in search of the Elden Ring.
+Emboldened by the flame of ambition."*
 
-**[ENTER THE PORTFOLIO](https://generalbenmalek.github.io/generalBenmalek/)**
+[![Enter the Portfolio](https://img.shields.io/badge/🔥_ENTER_THE_PORTFOLIO_-black?style=for-the-badge)](https://generalbenmalek.github.io/generalBenmalek/)
 
 *May the flames guide thee.*
 
+
 </div>
+
+
