@@ -1,204 +1,179 @@
-# THE ULTIMATE GAME DEVELOPER BEGGINER
-
 <div align="center">
 
-![Profile Banner](https://img.shields.io/badge/Game_Developer-Software_Engineer-d4af37?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Seeking_Challenges-90ee90?style=for-the-badge)
-![Level](https://img.shields.io/badge/Level-Rising-f4e4b0?style=for-the-badge)
+![Banner](https://generalbenmalek.github.io/generalBenmalek/benmalek/wallpaper.jpg)
 
-### 🎮 *A Dark Souls Inspired Interactive Portfolio* 🎮
+# THE WARRIOR CODEX
 
-**[⚔️ EXPLORE THE DEPTHS ⚔️](YOUR_LIVE_SITE_URL_HERE)**
+### THE ULTIMATE GAME DEVELOPER BEGINNER
+
+*"In the age of ancients, code was unformed, shrouded by fog. A land of gray crags, ancient trees, and everlasting commits. But then there was Fire. And with Fire came Disparity..."*
 
 ---
 
-*"In a world of code and creativity, one developer seeks to forge legendary experiences..."*
+**[ENTER THE DEEPS](https://generalbenmalek.github.io/generalBenmalek/)**
+
+---
 
 </div>
 
+
+
+## I. THE ULTIMATE GAME DEVELOPER BEGINNER
+
+*A game is where imagination meets creation — a world shaped by the developer’s vision, guided by their own rules, and brought to life through code and creativity.*
+
+**Specializations:**
+- Game Development | Roblox Studio
+- Full-Stack Engineering | JavaScript, Python, C++
+- Mobile Forging | Flutter
+
 ---
 
-## 🗡️ About the Tarnished
+## II. ATTRIBUTES & STATISTICS
 
-A passionate **Game Developer** and **Software Engineer** specializing in:
-- 🎮 Game Development (Roblox Studio, Unity, Unreal)
-- 💻 Full-Stack Development (JavaScript, Python, C++)
-- 📱 Mobile Applications (Flutter, React Native)
-- 🔐 Security & Blockchain (Smart Contracts)
-
----
-
-## 📊 Character Stats
-
-### ⚔️ Hard Skills
+### VIGOR - Hard Skills
 
 ```
-Lua                 ████████████████████░░░░░ 85%
-JavaScript          ████████████████████░░░░░ 78%
-Node.js             ███████████████████░░░░░░ 75%
-Dart                ██████████████████░░░░░░░ 70%
-C++                 ██████████████████░░░░░░░ 70%
-MongoDB             ██████████████████░░░░░░░ 70%
-Roblox Studio       █████████████████░░░░░░░░ 69%
-Flutter             █████████████████░░░░░░░░ 65%
-Python              ███████████████░░░░░░░░░░ 60%
+Lua                 ████████████████████░░░░░ 85
+JavaScript          ████████████████████░░░░░ 78
+Node.js             ███████████████████░░░░░░ 75
+Dart                ██████████████████░░░░░░░ 70
+C++                 ██████████████████░░░░░░░ 70
+MongoDB             ██████████████████░░░░░░░ 70
+Roblox Studio       █████████████████░░░░░░░░ 69
+Flutter             █████████████████░░░░░░░░ 65
+Python              ███████████████░░░░░░░░░░ 60
 ```
 
-### 🛡️ Soft Skills
+### MIND - Soft Skills
 
 ```
-Creativity          ████████████████████░░░░░ 80%
-Problem Solving     ███████████████████░░░░░░ 75%
-Adaptability        ███████████████████░░░░░░ 75%
-Teamwork            ██████████████░░░░░░░░░░░ 55%
-Communication       █████████████░░░░░░░░░░░░ 50%
+Creativity          ████████████████████░░░░░ 80
+Problem Solving     ███████████████████░░░░░░ 75
+Adaptability        ███████████████████░░░░░░ 75
+Teamwork            ██████████████░░░░░░░░░░░ 55
+Communication       █████████████░░░░░░░░░░░░ 50
 ```
 
 ---
 
-## 🎯 Legendary Quests (Projects)
+## III. GREAT RUNES - Notable Projects
 
-### 🔐 **YACK – Your Agreement Contract Keeper**
-> *A secure mobile app for creating and signing digital contracts*
-- 🔒 **Hashing** for data integrity
-- 📱 Built with **Flutter** & **Firebase**
-- 🔮 Future: Blockchain & GPS verification
+### THE KEEPER'S ACCORD | YACK
+*Your Agreement Contract Keeper*
 
-**Tags:** `Flutter` `Firebase` `Security` `Mobile`
+A secure sanctum for the forging and sealing of digital contracts. Built with the ancient arts of hashing to ensure the integrity of all agreements. Future enhancements include the integration of blockchain runes and GPS verification glyphs.
 
----
-
-### ⚔️ **World of Elements Battle Ground**
-> *An elemental combat Roblox game with dynamic mechanics*
-- 🎮 Multiple elemental classes
-- ⚡ Ultimate skills & boss battles
-- 🏆 Competitive PvP arena
-
-**Tags:** `Roblox` `Lua` `Game Development` `Combat System`
+**Forged With:** Flutter | Firebase | Cryptographic Seals
 
 ---
 
-### 👻 **OurJoy**
-> *A horror-adventure Roblox game with psychological elements*
-- 🏥 Set in a mysterious surgical facility
-- 🧩 Puzzles, traps, and multi-boss encounters
-- 😱 Atmospheric horror experience
+### ELEMENTAL DOMINION | World of Elements Battle Ground
 
-**Tags:** `Roblox` `Horror` `Adventure` `Puzzle`
+A battleground where champions wield the primal forces of nature. Multiple elemental disciplines clash in combat, each with ultimate techniques and forbidden arts. Boss encounters test the limits of mortal capability.
+
+**Forged With:** Roblox | Lua | Combat Algorithms
 
 ---
 
-### 🎨 **ColorTris**
-> *A JavaScript puzzle game with color-matching mechanics*
-- 🕹️ Tetris-inspired gameplay
-- 🎵 Sound effects & smooth animations
-- 🎯 Progressive difficulty system
+### THE ASYLUM | OurJoy
 
-**Tags:** `JavaScript` `HTML` `CSS` `Game Design`
+A forsaken surgical facility where reality twists upon itself. Navigate puzzles that defy logic, avoid cunningly placed traps, and face entities that should not exist. A journey into psychological horror.
+
+**Forged With:** Roblox | Environmental Storytelling | Lua
 
 ---
 
-### 📜 **Portfolio Codex (This Site!)**
-> *An interactive Dark Souls-themed portfolio*
-- 🎮 **XP System** - Earn experience by playing games
-- 🌳 **Skill Tree** - Unlock and level up skills
-- 🎴 **Memory Card Game** - Test your memory to escape traps
-- 🎯 **ColorTris** - Play the mini-game for rewards
-- 🪤 **Cursed Traps** - Navigate carefully or face challenges
-- 📦 **Inventory System** - View all projects and achievements
+### THE FALLING STONES | ColorTris
 
-**Tags:** `HTML` `CSS` `JavaScript` `Interactive` `Game Design`
+An ancient puzzle where colored fragments descend from the heavens. Match the patterns, clear the lines, and survive as long as your reflexes permit. The stones fall faster with each passing moment.
+
+**Forged With:** JavaScript | HTML Canvas | CSS Animations
 
 ---
 
-## 🎮 Portfolio Features
+### THE CODEX ITSELF | This Portfolio
 
-<div align="center">
+An interactive grimoire chronicling the Tarnished's journey. Features an experience system for growth, a vast skill constellation, memory trials to escape cursed domains, and the falling stones puzzle integrated within.
 
-| Feature | Description |
-|---------|-------------|
-| **📈 XP System** | Gain experience points by completing challenges |
-| **🌳 Skill Tree** | Unlock over 100+ skills across multiple tech paths |
-| **🎴 Memory Game** | Match cards to escape trap sections |
-| **🎮 ColorTris** | Play an integrated Tetris-style game |
-| **🪤 Random Traps** | Navigate sections carefully - traps appear randomly! |
-| **📦 Inventory** | View all projects with rarity indicators |
-| **⚔️ RPG Theme** | Immersive Dark Souls-inspired UI/UX |
+**Features of Note:**
+- Experience System | Gain power through completing trials
+- Skill Constellation | Over 100 nodes spanning the breadth of software mastery
+- Memory Trials | Card-matching challenges to escape trap encounters
+- The Falling Stones | Integrated puzzle game
+- Cursed Encounters | Random trap sections that test wit and reflexes
+- The Inventory | All achievements and artifacts collected
+- Medieval Aesthetics | Inspired by the lands of Lordran and the Lands Between
 
-</div>
-
----
-
-## 🛠️ Tech Stack
-
-<div align="center">
-
-### Languages
-![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-
-### Frameworks & Tools
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
-![Roblox](https://img.shields.io/badge/Roblox-000000?style=for-the-badge&logo=roblox&logoColor=white)
-
-</div>
+**Forged With:** HTML | CSS | JavaScript | Dark Souls Aesthetics
 
 ---
 
-## 🎯 How to Navigate the Portfolio
+## IV. ARMAMENTS & TOOLS
 
-1. **🌄 Welcome Screen** - Start your journey at the surface
-2. **⬇️ Descend** - Click "Explore" to delve into the depths
-3. **🎮 Play Games** - Earn XP by completing challenges
-4. **🌳 Unlock Skills** - Spend skill points on the skill tree
-5. **🪤 Avoid Traps** - Watch out for random trap encounters!
-6. **🏆 Complete the Journey** - Explore all sections
+**Languages of Power**
 
----
+Lua | JavaScript | Python | C++ | Dart | SQL
 
-## 📫 Summon the Tarnished
+**Frameworks & Ancient Technologies**
 
-<div align="center">
+Node.js | Flutter | MongoDB | Firebase | Roblox Studio | Express.js
 
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-username)
-[![Portfolio](https://img.shields.io/badge/Portfolio-d4af37?style=for-the-badge&logo=google-chrome&logoColor=white)](YOUR_LIVE_SITE_URL_HERE)
+**Development Sanctums**
 
-</div>
+Git | VS Code | Android Studio | Unity | Unreal Engine
 
 ---
 
-## 🎨 Design Inspiration
+## V. NAVIGATION THROUGH THE LANDS
 
-This portfolio draws inspiration from:
-- 🎮 **Dark Souls/Elden Ring** - RPG mechanics and medieval aesthetics
-- ⚔️ **Runescape** - Skill tree progression system
-- 🎴 **Classic Card Games** - Memory matching mechanics
-- 🕹️ **Tetris** - Puzzle game integration
+**The Journey Unfolds:**
+
+1. **The Surface** - Begin at the welcome precipice
+2. **The Descent** - Activate the exploration ritual
+3. **Trials of Skill** - Complete challenges to earn runes of experience
+4. **The Skill Tree** - Invest runes into the constellation of mastery
+5. **Cursed Encounters** - Navigate carefully, for traps lie in wait
+6. **The Full Circuit** - Traverse all six realms of the codex
 
 ---
 
-## 📜 License
+## VI. SUMMON THE TARNISHED
 
-This project is open source and available under the [MIT License](LICENSE).
+For those who would seek audience or collaboration:
+
+**Electronic Correspondence:** mohamed.aymen.benmalek@ensia.edu.dz  
+**GitHub Repository:** [github.com/your-username](https://github.com/generalBenamlek)  
+**The Living Codex:** [YOUR_LIVE_SITE_URL_HERE](https://generalbenmalek.github.io/generalBenmalek/)
+
+---
+
+## VII. DESIGN PHILOSOPHY
+
+This codex draws inspiration from the following legendary works:
+
+**Dark Souls / Elden Ring** - The progression systems, medieval aesthetics, and sense of earned accomplishment
+
+**RuneScape** - The skill tree mechanics and character development philosophy
+
+**Classic Memory Trials** - The tradition of matching-card challenges
+
+**Tetris** - The timeless puzzle of falling blocks and pattern recognition
+
+---
+
+## VIII. THE ANCIENT TEXTS
+
+This repository is released under the MIT License. All Tarnished are free to study and adapt these techniques.
 
 ---
 
 <div align="center">
 
-### ⚔️ *"May the code be with you, Tarnished One"* ⚔️
+### *"Foul Tarnished, in search of the Elden Ring. Emboldened by the flame of ambition."*
 
-![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=your-username.tarnished-portfolio)
-![GitHub Stars](https://img.shields.io/github/stars/your-username/tarnished-portfolio?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/your-username/tarnished-portfolio?style=social)
+**[ENTER THE PORTFOLIO](https://generalbenmalek.github.io/generalBenmalek/)**
 
-**[⚔️ ENTER THE PORTFOLIO ⚔️](YOUR_LIVE_SITE_URL_HERE)**
+*May the flames guide thee.*
 
 </div>
