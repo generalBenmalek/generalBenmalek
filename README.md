@@ -22,7 +22,7 @@
 ╔═══════════════════════════════════════════════════════════════╗
 ║                                                               ║
 ║  👤 NAME:    Benmalek Mohamed Aymen                           ║
-║  🎯 CLASS:   Game Development Seeker                          ║
+║  🎯 CLASS:   AI & Game Development Seeker                     ║
 ║  ⭐ LEVEL:   Ascending Warrior                                ║
 ║  💎 RUNES:   Gathering Knowledge                              ║
 ║                                                               ║
@@ -40,11 +40,11 @@
 
 #### ⚡ Primary Arsenal
 ```text
+Python          ██████████████████░░  90%
 Lua             ████████████████░░░░  85%
 JavaScript      ███████████████░░░░░  78%
+FastAPI         ███████████████░░░░░  75%
 Node.js         ███████████████░░░░░  75%
-C++             ██████████████░░░░░░  70%
-Dart            ██████████████░░░░░░  70%
 ```
 
 </td>
@@ -52,11 +52,11 @@ Dart            ██████████████░░░░░░  70
 
 #### 🛡️ Secondary Mastery
 ```text
+PyTorch         ██████████████░░░░░░  72%
+C++             ██████████████░░░░░░  70%
+Dart            ██████████████░░░░░░  70%
 MongoDB         ██████████████░░░░░░  70%
-Roblox Studio   █████████████░░░░░░░  69%
-Flutter         █████████████░░░░░░░  65%
-Python          ████████████░░░░░░░░  60%
-React           ███████████░░░░░░░░░  55%
+Flutter         █████████████░░░░░░░  68%
 ```
 
 </td>
@@ -149,7 +149,79 @@ React           ███████████░░░░░░░░░  55
 <tr>
 <td width="50%">
 
-<h3 align="center">⚡ YACK - Your Agreement Contract Keeper</h3>
+<h3 align="center">🤖 ENSIA Impact Chatbot</h3>
+
+<div align="center">
+
+[![ENSIA Impact Chatbot](https://github-readme-stats.vercel.app/api/pin/?username=generalBenmalek&repo=Ensia-Impact-ChatBot&theme=transparent&bg_color=0a0a0a&title_color=d4af37&text_color=d4af37&icon_color=d4af37&border_color=d4af37&border_radius=10)](https://github.com/generalBenmalek/Ensia-Impact-ChatBot)
+
+**Legendary Tier** • AI & RAG System
+
+`Python` `LangChain` `Qdrant` `Ollama`
+
+A RAG-powered chatbot specialized for Telegram group conversation queries in Arabic and English, utilizing EasyOCR, PyMuPDF, BGE-M3, and local Qwen 2.5 7B.
+
+</div>
+
+</td>
+<td width="50%">
+
+<h3 align="center">⚡ Appliance Power Consumption Classification (Kaggle)</h3>
+
+<div align="center">
+
+[![Appliance Classification](https://github-readme-stats.vercel.app/api/pin/?username=generalBenmalek&repo=Appliance-Classification-Kaggle&theme=transparent&bg_color=0a0a0a&title_color=d4af37&text_color=d4af37&icon_color=d4af37&border_color=d4af37&border_radius=10)](https://github.com/generalBenmalek/Appliance-Classification-Kaggle)
+
+**Legendary Tier** • Time Series Classification
+
+`Python` `Scikit-learn` `Pandas` `ML`
+
+Time series power consumption classification of 10 categories of household appliances using k-NN, SVM, and Random Forests.
+
+</div>
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+<h3 align="center">🚗 Smart Multi-Level Parking Optimization</h3>
+
+<div align="center">
+
+[![Parking Optimization](https://github-readme-stats.vercel.app/api/pin/?username=generalBenmalek&repo=Parking-Optimization&theme=transparent&bg_color=0a0a0a&title_color=d4af37&text_color=d4af37&icon_color=d4af37&border_color=d4af37&border_radius=10)](https://github.com/generalBenmalek/Parking-Optimization)
+
+**Legendary Tier** • Optimization & Metaheuristics
+
+`Python` `MILP` `Genetic Algorithms` `MDPs`
+
+Vehicle allocation optimization modeled as a Stochastic Shortest Path MDP and MILP, solved using Genetic Algorithms and Simulated Annealing.
+
+</div>
+
+</td>
+<td width="50%">
+
+<h3 align="center">🍽️ IntelliCanteen</h3>
+
+<div align="center">
+
+[![IntelliCanteen](https://github-readme-stats.vercel.app/api/pin/?username=generalBenmalek&repo=intellicanteen&theme=transparent&bg_color=0a0a0a&title_color=d4af37&text_color=d4af37&icon_color=d4af37&border_color=d4af37&border_radius=10)](https://github.com/generalBenmalek/intellicanteen)
+
+**Epic Tier** • ML & Demand Forecasting
+
+`Python` `CatBoost` `Optuna` `PyTorch`
+
+A machine learning framework forecasting daily meal demand at university canteens using CatBoostRegressor, PyTorch deep learning, and Optuna.
+
+</div>
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+<h3 align="center">🔑 YACK - Your Agreement Contract Keeper</h3>
 
 <div align="center">
 
@@ -157,9 +229,9 @@ React           ███████████░░░░░░░░░  55
 
 **Epic Tier** • Security App
 
-`Flutter` `Firebase` `Hashing`
+`Flutter` `Firebase` `Cryptography` `Dart`
 
-A secure mobile app for creating and signing digital contracts with data integrity verification.
+A secure mobile app for creating and signing digital contracts with zero-knowledge architecture and end-to-end encrypted chat.
 
 </div>
 
@@ -182,42 +254,6 @@ Fighting game featuring elemental classes and dynamic combat mechanics.
 
 </td>
 </tr>
-<tr>
-<td width="50%">
-
-<h3 align="center">👻 OurJoy</h3>
-
-<div align="center">
-
-[![OurJoy](https://github-readme-stats.vercel.app/api/pin/?username=generalBenmalek&repo=OurJoy&theme=transparent&bg_color=0a0a0a&title_color=d4af37&text_color=d4af37&icon_color=d4af37&border_color=d4af37&border_radius=10)](https://github.com/generalBenmalek/OurJoy)
-
-**Rare Tier** • Horror Adventure
-
-`Roblox` `Game Design` `Horror`
-
-Horror-adventure game set in a surgical facility with puzzles and traps.
-
-</div>
-
-</td>
-<td width="50%">
-
-<h3 align="center">🎨 ColorTris</h3>
-
-<div align="center">
-
-[![ColorTris](https://github-readme-stats.vercel.app/api/pin/?username=generalBenmalek&repo=ColorTris&theme=transparent&bg_color=0a0a0a&title_color=d4af37&text_color=d4af37&icon_color=d4af37&border_color=d4af37&border_radius=10)](https://github.com/generalBenmalek/ColorTris)
-
-**Epic Tier** • Puzzle Game
-
-`JavaScript` `HTML` `CSS`
-
-Tetris-inspired puzzle game with smooth animations and color-matching.
-
-</div>
-
-</td>
-</tr>
 </table>
 
 </div>
@@ -232,6 +268,12 @@ Tetris-inspired puzzle game with smooth animations and color-matching.
 
 <table>
 <tr>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=python" width="50" height="50" alt="Python"/>
+<br><b>Python</b>
+<br><sub>⭐⭐⭐⭐⭐</sub>
+<br><code>Legendary</code>
+</td>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=lua" width="50" height="50" alt="Lua"/>
 <br><b>Lua</b>
@@ -251,14 +293,34 @@ Tetris-inspired puzzle game with smooth animations and color-matching.
 <br><code>Epic</code>
 </td>
 <td align="center" width="12.5%">
-<img src="https://skillicons.dev/icons?i=cpp" width="50" height="50" alt="C++"/>
-<br><b>C++</b>
+<img src="https://skillicons.dev/icons?i=pytorch" width="50" height="50" alt="PyTorch"/>
+<br><b>PyTorch</b>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=flutter" width="50" height="50" alt="Flutter"/>
+<br><b>Flutter</b>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=nextjs" width="50" height="50" alt="Next.js"/>
+<br><b>Next.js</b>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=postgres" width="50" height="50" alt="PostgreSQL"/>
+<br><b>PostgreSQL</b>
 <br><sub>⭐⭐⭐</sub>
 <br><code>Rare</code>
 </td>
+</tr>
+<tr>
 <td align="center" width="12.5%">
-<img src="https://skillicons.dev/icons?i=python" width="50" height="50" alt="Python"/>
-<br><b>Python</b>
+<img src="https://skillicons.dev/icons?i=cpp" width="50" height="50" alt="C++"/>
+<br><b>C++</b>
 <br><sub>⭐⭐⭐</sub>
 <br><code>Rare</code>
 </td>
@@ -269,24 +331,10 @@ Tetris-inspired puzzle game with smooth animations and color-matching.
 <br><code>Rare</code>
 </td>
 <td align="center" width="12.5%">
-<img src="https://skillicons.dev/icons?i=flutter" width="50" height="50" alt="Flutter"/>
-<br><b>Flutter</b>
-<br><sub>⭐⭐⭐</sub>
-<br><code>Rare</code>
-</td>
-<td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=mongodb" width="50" height="50" alt="MongoDB"/>
 <br><b>MongoDB</b>
 <br><sub>⭐⭐⭐</sub>
 <br><code>Rare</code>
-</td>
-</tr>
-<tr>
-<td align="center" width="12.5%">
-<img src="https://skillicons.dev/icons?i=react" width="50" height="50" alt="React"/>
-<br><b>React</b>
-<br><sub>⭐⭐</sub>
-<br><code>Uncommon</code>
 </td>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=html" width="50" height="50" alt="HTML"/>
@@ -303,21 +351,23 @@ Tetris-inspired puzzle game with smooth animations and color-matching.
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=firebase" width="50" height="50" alt="Firebase"/>
 <br><b>Firebase</b>
-<br><sub>⭐⭐</sub>
-<br><code>Common</code>
+<br><sub>⭐⭐⭐</sub>
+<br><code>Rare</code>
 </td>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=git" width="50" height="50" alt="Git"/>
 <br><b>Git</b>
-<br><sub>⭐⭐</sub>
-<br><code>Common</code>
+<br><sub>⭐⭐⭐</sub>
+<br><code>Rare</code>
 </td>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=github" width="50" height="50" alt="GitHub"/>
 <br><b>GitHub</b>
-<br><sub>⭐⭐</sub>
-<br><code>Common</code>
+<br><sub>⭐⭐⭐</sub>
+<br><code>Rare</code>
 </td>
+</tr>
+<tr>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=vscode" width="50" height="50" alt="VS Code"/>
 <br><b>VS Code</b>
@@ -329,6 +379,42 @@ Tetris-inspired puzzle game with smooth animations and color-matching.
 <br><b>Figma</b>
 <br><sub>⭐⭐</sub>
 <br><code>Common</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=docker" width="50" height="50" alt="Docker"/>
+<br><b>Docker</b>
+<br><sub>⭐⭐</sub>
+<br><code>Common</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=sqlite" width="50" height="50" alt="SQLite"/>
+<br><b>SQLite</b>
+<br><sub>⭐⭐⭐</sub>
+<br><code>Rare</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=react" width="50" height="50" alt="React"/>
+<br><b>React</b>
+<br><sub>⭐⭐⭐</sub>
+<br><code>Rare</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=tailwind" width="50" height="50" alt="Tailwind"/>
+<br><b>Tailwind</b>
+<br><sub>⭐⭐⭐</sub>
+<br><code>Rare</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=cs" width="50" height="50" alt="C#"/>
+<br><b>C#</b>
+<br><sub>⭐⭐⭐</sub>
+<br><code>Rare</code>
+</td>
+<td align="center" width="12.5%">
+<img src="https://skillicons.dev/icons?i=fastapi" width="50" height="50" alt="FastAPI"/>
+<br><b>FastAPI</b>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
 </td>
 </tr>
 </table>
@@ -364,33 +450,41 @@ Tetris-inspired puzzle game with smooth animations and color-matching.
 
 ### 💻 Programming Languages
 
+![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
-![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 
 ### 🚀 Frameworks & Libraries
 
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3A?style=for-the-badge&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 
 ### 🗄️ Databases & Backend
 
+![Qdrant](https://img.shields.io/badge/Qdrant-000000?style=for-the-badge&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 
 ### 🛠️ Tools & Platforms
 
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![JetBrains IDEs](https://img.shields.io/badge/JetBrains_IDEs-000000?style=for-the-badge&logo=jetbrains&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 ![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
-![MongoDB Compass](https://img.shields.io/badge/MongoDB_Compass-47A248?style=for-the-badge&logo=mongodb&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 
 ### 🎮 Game Development
 
 ![Roblox](https://img.shields.io/badge/Roblox_Studio-000000?style=for-the-badge&logo=roblox&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
+![Unity](https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=unity&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)
 
 </div>
 
@@ -402,7 +496,7 @@ Tetris-inspired puzzle game with smooth animations and color-matching.
 
 ### 📧 Send Raven Message
 
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)](mailto:mohamed.aymen.benmalek@example.com)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=ffffff&labelColor=0a0a0a&color=d4af37)](mailto:mohamed.aymen.benmalek@ensia.edu.dz)
 
 ### 🔗 Way Stones (Connect)
 
