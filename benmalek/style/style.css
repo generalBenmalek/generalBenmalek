@@ -1065,3 +1065,506 @@ body.exploring {
 #colortris {
     display: none;
 }
+
+/* ==========================================================================
+   PORTFOLIO HEADER & NAVBAR
+   ========================================================================== */
+.portfolio-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 2px solid #8b7355;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f4e4b0;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.portfolio-nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: #b8956a;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    padding: 5px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #f4e4b0;
+    border-bottom-color: #d4af37;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.theme-switch-btn {
+    background: transparent;
+    border: 2px solid #8b7355;
+    color: #d4af37;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    font-size: 1.1rem;
+}
+
+.theme-switch-btn:hover {
+    background: #d4af37;
+    color: #0a0a0a;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
+/* ==========================================================================
+   PROJECT EXPLORER MODAL
+   ========================================================================== */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.project-modal.active {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    max-height: 85vh;
+    background: #0f0f0f;
+    border: 3px solid #d4af37;
+    padding: 40px;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+    overflow-y: auto;
+    z-index: 2;
+    animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.5rem;
+    background: transparent;
+    border: none;
+    color: #d4af37;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 10;
+}
+
+.modal-close-btn:hover {
+    color: #f4e4b0;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 40px;
+}
+
+.modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: #f4e4b0;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.modal-subtitle {
+    font-size: 1.1rem;
+    color: #b8956a;
+    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
+}
+
+.modal-description-section, .modal-achievements-section, .modal-media-sidebar {
+    margin-top: 25px;
+}
+
+.modal-description-section h3, .modal-achievements-section h3, .modal-media-sidebar h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: #f4e4b0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #8b7355;
+    padding-bottom: 5px;
+}
+
+#modalDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #b8956a;
+}
+
+#modalAchievements {
+    padding-left: 20px;
+}
+
+#modalAchievements li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #b8956a;
+    margin-bottom: 8px;
+    list-style-type: square;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.modal-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.modal-btn:hover {
+    background: #d4af37;
+    color: #0a0a0a;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.modal-media-gallery {
+    margin-top: 20px;
+    border: 1px solid #8b7355;
+    background: rgba(0, 0, 0, 0.4);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #8b7355;
+    font-size: 0.9rem;
+    padding: 10px;
+}
+
+/* ==========================================================================
+   LAPIZ WHITE & GOLD LIGHT MODE THEME OVERRIDES
+   ========================================================================== */
+body.light-mode {
+    background: #faf8f2;
+    color: #5c4f33;
+}
+
+body.light-mode .bg-overlay {
+    background: radial-gradient(ellipse at center, rgba(250,248,242,0.85) 0%, rgba(242,238,228,0.95) 100%);
+}
+
+body.light-mode .particle {
+    background: #c5a059;
+    box-shadow: 0 0 4px #c5a059;
+}
+
+body.light-mode .runes {
+    background-image:
+            repeating-linear-gradient(0deg, transparent, transparent 50px, #c5a059 50px, #c5a059 51px),
+            repeating-linear-gradient(90deg, transparent, transparent 50px, #c5a059 50px, #c5a059 51px);
+    opacity: 0.02;
+}
+
+body.light-mode .section-title,
+body.light-mode .character-name,
+body.light-mode .game-title,
+body.light-mode .project-title,
+body.light-mode .contact-label,
+body.light-mode .modal-title,
+body.light-mode .modal-description-section h3,
+body.light-mode .modal-achievements-section h3,
+body.light-mode .modal-media-sidebar h3 {
+    color: #3c3320;
+    text-shadow: none;
+}
+
+body.light-mode .character-class,
+body.light-mode .project-description,
+body.light-mode .contact-value,
+body.light-mode .modal-subtitle,
+body.light-mode #modalDescription,
+body.light-mode #modalAchievements li {
+    color: #5c4f33;
+}
+
+body.light-mode .xp-container,
+body.light-mode .character-image,
+body.light-mode .game-board-container,
+body.light-mode .game-stats,
+body.light-mode .control-buttons,
+body.light-mode .contact-container,
+body.light-mode .project-card,
+body.light-mode .inventory-slot,
+body.light-mode .modal-content {
+    background: #ffffff;
+    border-color: #c5a059;
+    box-shadow: 0 8px 30px rgba(92, 79, 51, 0.08);
+}
+
+body.light-mode .project-card::before {
+    background: linear-gradient(45deg, rgba(197, 160, 89, 0.4), rgba(244, 228, 176, 0.3), rgba(197, 160, 89, 0.3));
+}
+
+body.light-mode .project-card:hover {
+    box-shadow: 0 10px 40px rgba(197, 160, 89, 0.25);
+}
+
+body.light-mode .stat-bar {
+    background: #faf8f2;
+    border-color: #c5a059;
+}
+
+body.light-mode .stat-fill {
+    background: linear-gradient(90deg, #c5a059 0%, #e6c887 100%);
+    box-shadow: 0 0 5px rgba(197, 160, 89, 0.3);
+}
+
+body.light-mode .character-image img,
+body.light-mode .character-image::before {
+    border-color: #c5a059;
+}
+
+body.light-mode .game-stat-item {
+    background: rgba(197, 160, 89, 0.1);
+    border-left-color: #c5a059;
+    color: #3c3320;
+}
+
+body.light-mode button,
+body.light-mode .nav-btn,
+body.light-mode .trap-button,
+body.light-mode .zoom-btn {
+    background: linear-gradient(145deg, #ffffff, #faf8f2);
+    border-color: #c5a059;
+    color: #c5a059;
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
+}
+
+body.light-mode button:hover,
+body.light-mode .nav-btn:hover,
+body.light-mode .trap-button:hover,
+body.light-mode .zoom-btn:hover {
+    background: #c5a059;
+    color: #faf8f2;
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+}
+
+body.light-mode #Main {
+    background-color: rgba(250, 248, 242, 0.8);
+    border-color: #c5a059;
+    box-shadow: inset 0 0 15px rgba(92, 79, 51, 0.15);
+}
+
+body.light-mode .cell {
+    border-color: rgba(197, 160, 89, 0.12);
+}
+
+body.light-mode .project-tag {
+    background: #c5a059;
+    color: #faf8f2;
+}
+
+body.light-mode .portfolio-header {
+    background: rgba(250, 248, 242, 0.85);
+    border-bottom-color: #c5a059;
+    box-shadow: 0 4px 20px rgba(92, 79, 51, 0.08);
+}
+
+body.light-mode .portfolio-logo {
+    color: #3c3320;
+    text-shadow: none;
+}
+
+body.light-mode .nav-link {
+    color: #5c4f33;
+}
+
+body.light-mode .nav-link:hover, body.light-mode .nav-link.active {
+    color: #3c3320;
+    border-bottom-color: #c5a059;
+    text-shadow: none;
+}
+
+body.light-mode .theme-switch-btn {
+    border-color: #c5a059;
+    color: #c5a059;
+}
+
+body.light-mode .theme-switch-btn:hover {
+    background: #c5a059;
+    color: #faf8f2;
+}
+
+body.light-mode .modal-close-btn {
+    color: #c5a059;
+}
+
+body.light-mode .modal-close-btn:hover {
+    color: #3c3320;
+}
+
+body.light-mode .modal-btn {
+    background: #ffffff;
+    border-color: #c5a059;
+    color: #c5a059;
+}
+
+body.light-mode .modal-btn:hover {
+    background: #c5a059;
+    color: #faf8f2;
+}
+
+body.light-mode .modal-media-gallery {
+    border-color: #c5a059;
+    background: #faf8f2;
+    color: #c5a059;
+}
+
+body.light-mode #stats::-webkit-scrollbar-track,
+body.light-mode #projects::-webkit-scrollbar-track {
+    background: #faf8f2;
+    border-color: #c5a059;
+}
+
+body.light-mode #stats::-webkit-scrollbar-thumb,
+body.light-mode #projects::-webkit-scrollbar-thumb {
+    background: #c5a059;
+}
+
+/* Skill Tree Light Mode Overrides */
+body.light-mode .skill-tree-ui {
+    background: #ffffff;
+    border-color: #c5a059;
+    box-shadow: 0 8px 30px rgba(92, 79, 51, 0.08);
+}
+
+body.light-mode .skill-points {
+    color: #3c3320;
+}
+
+body.light-mode .skill-node {
+    background: #ffffff;
+    border-color: #c5a059;
+    box-shadow: 0 8px 30px rgba(92, 79, 51, 0.08);
+}
+
+body.light-mode .skill-node.unlocked {
+    background: linear-gradient(145deg, #fffcf0, #faf5e6);
+    border-color: #c5a059;
+}
+
+body.light-mode .skill-node-name {
+    color: #3c3320;
+}
+
+body.light-mode .skill-node-level {
+    color: #5c4f33;
+}
+
+body.light-mode .skill-node-cost {
+    color: #c5a059;
+}
+
+body.light-mode .tree-branch {
+    background: linear-gradient(90deg, #e6c887 0%, #c5a059 50%, #e6c887 100%);
+}
+
+body.light-mode .tree-branch.unlocked {
+    background: linear-gradient(90deg, #c5a059 0%, #ffffff 50%, #c5a059 100%);
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
+}
+
+body.light-mode .tree-core {
+    background: radial-gradient(circle, #faf8f2 0%, #c5a059 100%);
+    border-color: #e6c887;
+    color: #3c3320;
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+}
+
+@media (max-width: 768px) {
+    .portfolio-header {
+        padding: 0 20px;
+        height: 60px;
+    }
+    .portfolio-logo {
+        font-size: 1.1rem;
+    }
+    .portfolio-nav {
+        gap: 15px;
+    }
+    .nav-link {
+        font-size: 0.8rem;
+    }
+    #stats, #colortris, #skills, #inventory, #projects, #contact {
+        padding-top: 80px;
+    }
+}

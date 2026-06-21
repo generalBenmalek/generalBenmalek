@@ -1,0 +1,23 @@
+{
+  "id": "2_appliance_power_classification",
+  "title": "Appliance Power Consumption Classification",
+  "subtitle": "Time Series Classification (Kaggle)",
+  "technologies": [
+    "Python",
+    "Scikit-learn",
+    "Pandas",
+    "NumPy",
+    "Time Series Analysis"
+  ],
+  "description": "A machine learning pipeline developed for a Kaggle competition to classify time series power consumption data into 10 categories of typical household appliances.",
+  "achievements": [
+    "Engineered a machine learning pipeline for a Kaggle competition to classify time series power consumption data into 10 distinct categories of household appliances: mobile phones (via chargers), coffee machines, computer stations (including monitor), fridges and freezers, Hi-Fi systems (CD players), lamp (CFL), laptops (via chargers), microwave ovens, printers, and televisions (LCD or LED).",
+    "Extracted representative statistical and temporal features from appliance power load curves using time series feature engineering to construct structured datasets.",
+    "Implemented and evaluated multiple classification models including k-Nearest Neighbors (k-NN), Support Vector Machines (SVM), Decision Trees, and Random Forests using scikit-learn.",
+    "Conducted extensive hyperparameter tuning and feature selection to optimize classification metrics and model generalization on unseen test datasets."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

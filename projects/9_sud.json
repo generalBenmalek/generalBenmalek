@@ -1,0 +1,23 @@
+{
+  "id": "9_sud",
+  "title": "SUD (Secure Update Downloader)",
+  "subtitle": "Signed Update System",
+  "technologies": [
+    "Python",
+    "Cryptography",
+    "SQLite",
+    "aria2",
+    "Cybersecurity"
+  ],
+  "description": "A secure software distribution and automatic update downloader featuring Ed25519/RSA manifest signatures, rollback protection, and multi-segment aria2 download management.",
+  "achievements": [
+    "Developed a secure software distribution and automatic update system with cryptographic verification, rollback protection, and tamper-resistant package delivery.",
+    "Implemented signed manifest verification using Ed25519/RSA signatures and SHA-256 integrity checks to protect against MITM attacks and malicious package tampering.",
+    "Designed a layered architecture with CLI and Tkinter GUI interfaces, application services, domain security rules, and infrastructure modules for networking, storage, and package management.",
+    "Built a multi-segment download manager powered by aria2 with pause/resume support, persistent download recovery, and automated observer-driven installation workflows."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

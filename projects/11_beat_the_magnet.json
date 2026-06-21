@@ -1,0 +1,22 @@
+{
+  "id": "11_beat_the_magnet",
+  "title": "Beat The Magnet",
+  "subtitle": "Predictive AI Survival Game",
+  "technologies": [
+    "Python",
+    "Pygame",
+    "Time Series Analysis",
+    "AI"
+  ],
+  "description": "A real-time survival game in Pygame featuring an AI pursuer that predicts player trajectory using autoregressive (AR) models and trigonometric pattern analysis.",
+  "achievements": [
+    "Developed a real-time survival game where an AI-controlled agent predicts and chases player movement using time series forecasting techniques.",
+    "Implemented fast movement prediction algorithms combining autoregressive (AR) models with sinusoidal and cosine-based pattern analysis to adapt to player behavior dynamically.",
+    "Designed a continuously updating prediction system that analyzes previous player movements in real time to improve pursuit accuracy.",
+    "Built gameplay mechanics in Pygame where players must survive for 60 seconds without being captured by the predictive AI agent."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "4_intellicanteen",
+  "title": "IntelliCanteen",
+  "subtitle": "ML & Demand Forecasting",
+  "technologies": [
+    "Python",
+    "CatBoost",
+    "Optuna",
+    "PyTorch",
+    "Scikit-learn",
+    "Pandas"
+  ],
+  "description": "A machine learning demand forecasting framework designed to estimate the count of different meal types across university restaurants (DOU) using menus and canteen statistics.",
+  "achievements": [
+    "Developed a machine learning framework to forecast daily meal demand across university restaurants (DOU) to optimize food preparation planning and reduce waste.",
+    "Performed exploratory data analysis (EDA) and joined text-based daily menu items and restaurant statistics across canteens using custom normalization strategies.",
+    "Engineered tabular and text features from canteens' menus and statistics, applying log-transformations (log1p) to target variables for improved model training stability.",
+    "Built and trained regression models using CatBoost and deep learning, utilizing Optuna on GPU to automate hyperparameter tuning over a time-based validation split.",
+    "Designed a multi-output regression architecture to predict multiple independent meal types simultaneously, evaluating model performance against a 7-day moving average baseline."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

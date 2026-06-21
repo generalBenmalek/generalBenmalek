@@ -1,0 +1,23 @@
+{
+  "id": "5_esia_nexus",
+  "title": "ENSIA Nexus",
+  "subtitle": "Collaboration Platform",
+  "technologies": [
+    "Next.js",
+    "FastAPI",
+    "PostgreSQL",
+    "Python",
+    "TypeScript",
+    "Google OAuth"
+  ],
+  "description": "A research and project collaboration platform built for ENSIA students and researchers, enabling easy sharing of ideas, research, and resource management.",
+  "achievements": [
+    "Collaborated on the development of a research and project collaboration platform for ENSIA students and researchers.",
+    "Contributed to frontend and backend features including authentication, API integration, project management interfaces, and responsive UI components.",
+    "Worked within a team-based GitHub workflow using Next.js, FastAPI, and PostgreSQL to build scalable full-stack services."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

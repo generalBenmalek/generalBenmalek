@@ -1,0 +1,21 @@
+{
+  "id": "6_taskit",
+  "title": "TaskIt",
+  "subtitle": "Web Task Management",
+  "technologies": [
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "MongoDB"
+  ],
+  "description": "A responsive full-stack task management application enabling users to create, organize, filter, and track tasks dynamically.",
+  "achievements": [
+    "Created a task management web application allowing users to create, organize, update, and delete tasks efficiently.",
+    "Designed backend APIs with Express.js and MongoDB for task storage, filtering, and user-specific data handling.",
+    "Implemented responsive frontend interactions and CRUD operations for smooth task management experience."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

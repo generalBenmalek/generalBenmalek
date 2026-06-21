@@ -1,0 +1,26 @@
+{
+  "id": "7_yack",
+  "title": "YACK (Your Agreement Contract Keeper)",
+  "subtitle": "Secure Mobile Contracts",
+  "technologies": [
+    "Flutter",
+    "Dart",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Firebase",
+    "Cryptography"
+  ],
+  "description": "A secure mobile contract platform with client-side RSA key pair encryption, zero-knowledge storage, and end-to-end encrypted messaging.",
+  "achievements": [
+    "Developed a secure mobile platform for creating, signing, and managing digital contracts with end-to-end encrypted communication.",
+    "Implemented a zero-knowledge security architecture where user private RSA keys are encrypted client-side using Argon2id-derived credentials before storage on the server.",
+    "Designed encrypted contract and chat systems where all data is encrypted using participants' public keys, preventing server-side access to messages or contract contents.",
+    "Built an end-to-end encrypted real-time messaging system enabling secure communication between contract participants.",
+    "Integrated local and cloud persistence using MongoDB, Firebase, Hive, and Isar to support secure synchronization and offline access."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

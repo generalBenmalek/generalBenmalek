@@ -1,0 +1,23 @@
+{
+  "id": "3_smart_parking_optimization",
+  "title": "Smart Multi-Level Parking Optimization",
+  "subtitle": "Optimization & Metaheuristics",
+  "technologies": [
+    "Python",
+    "MILP",
+    "Genetic Algorithms",
+    "Simulated Annealing",
+    "MDPs"
+  ],
+  "description": "An optimization system modeling vehicle allocation in a smart multi-level parking facility as a Stochastic Shortest Path (SSP) Markov Decision Process (MDP) and a Mixed-Integer Linear Program (MILP).",
+  "achievements": [
+    "Designed and modeled a smart multi-level parking facility as a Stochastic Shortest Path (SSP) Markov Decision Process (MDP) and a Classical Mixed-Integer Linear Program (MILP) to optimize vehicle allocations under spatial, temporal, and operational constraints.",
+    "Developed an online greedy assignment strategy with a one-step lookahead cost function to evaluate candidate spots using weighted penalty criteria (distance, level balance, EV status, local crowding, size mismatch).",
+    "Implemented metaheuristic optimization techniques including Genetic Algorithms (GA) and Simulated Annealing (SA) in Python to tune policy weights.",
+    "Evolved policy weights that allowed the real-time greedy online algorithm to achieve near-global optimality, outperforming Classical MILP in high-traffic scenarios (by avoiding exponential timeouts) and running in less than 0.01 seconds."
+  ],
+  "path_report": "benmalek/reports/NMO_parking_mania_report.pdf",
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

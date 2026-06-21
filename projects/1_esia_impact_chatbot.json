@@ -1,0 +1,25 @@
+{
+  "id": "1_esia_impact_chatbot",
+  "title": "ENSIA Impact Chatbot",
+  "subtitle": "AI & RAG System",
+  "technologies": [
+    "Python",
+    "LangChain",
+    "Qdrant",
+    "Ollama",
+    "PyMuPDF",
+    "EasyOCR"
+  ],
+  "description": "A Retrieval-Augmented Generation (RAG) system specialized for querying archived Telegram group conversations. It features multimodal attachment extraction, conversational context reconstruction, and local LLM inference.",
+  "achievements": [
+    "Developed a RAG-powered chatbot specialized for indexing and querying archived Telegram group conversations in Arabic and English.",
+    "Implemented multimodal attachment extraction using EasyOCR for images and PyMuPDF for scanned and digital PDFs.",
+    "Designed a conversational context reconstruction method utilizing reply chain tracking and overlap-boundary chunking to maintain context continuity.",
+    "Integrated BGE-M3 embeddings and a local Qdrant vector database with metadata-based reranking to achieve high-precision semantic search.",
+    "Built a modular architecture using the Factory and Facade/Pipeline patterns to enable incremental knowledge base updates and local LLM inference via Qwen 2.5 7B on Ollama."
+  ],
+  "path_report": "benmalek/reports/ensia_impact_chatbot.pdf",
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

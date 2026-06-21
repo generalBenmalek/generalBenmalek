@@ -1,0 +1,23 @@
+{
+  "id": "10_dotschat",
+  "title": "DotsChat",
+  "subtitle": "Real-time Messaging App",
+  "technologies": [
+    "Dart",
+    "Flutter",
+    "WebSockets",
+    "Node.js",
+    "Express.js",
+    "MongoDB"
+  ],
+  "description": "A Telegram-inspired messaging client and server architecture supporting real-time chat rooms, notifications, and scalable user management.",
+  "achievements": [
+    "Developed a Telegram-inspired real-time chat platform with Flutter frontend and Node.js backend architecture.",
+    "Implemented real-time communication using WebSockets for instant messaging and live updates between users.",
+    "Designed scalable backend APIs and MongoDB data structures for chat rooms, messages, and user management."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

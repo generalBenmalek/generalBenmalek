@@ -1,0 +1,23 @@
+{
+  "id": "8_moneycash",
+  "title": "MoneyCash",
+  "subtitle": "Financial Optimization",
+  "technologies": [
+    "Python",
+    "JavaScript",
+    "HTML",
+    "Metaheuristics",
+    "CSP"
+  ],
+  "description": "An intelligent financial planning dashboard that models and optimizes monthly salary distribution across spending categories and savings goals using search and constraint satisfaction algorithms.",
+  "achievements": [
+    "Developed an intelligent financial planning system that optimizes monthly salary distribution across user-defined spending categories and savings goals.",
+    "Designed a mathematical penalty-based optimization model that balances spending priorities, constraints, and savings efficiency.",
+    "Implemented and compared multiple search and optimization algorithms including Hill Climbing, Breadth-First Search (BFS), Depth-First Search (DFS), and Constraint Satisfaction Problem (CSP) techniques.",
+    "Built an interactive dashboard to visualize optimization results, compare algorithm performance, and analyze generated budget distributions."
+  ],
+  "path_report": null,
+  "path_video": null,
+  "images": [],
+  "youtube_videos": []
+}

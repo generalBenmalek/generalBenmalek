@@ -9,15 +9,11 @@ document.getElementById('exploreBtn').addEventListener('click', function() {
     const caveTransition = document.getElementById('caveTransition');
     const navButtons = document.querySelector('.nav-buttons');
     const sectionIndicator = document.querySelector('.section-indicator');
+    const portfolioHeader = document.getElementById('portfolioHeader');
 
     // Hide welcome screen
     welcomeScreen.classList.add('descending');
     caveTransition.classList.add('active');
-
-    // // Start cave transition animation
-    // setTimeout(() => {
-    //     caveTransition.classList.add('active');
-    // }, 500);
 
     // After animation completes
     setTimeout(() => {
@@ -30,6 +26,9 @@ document.getElementById('exploreBtn').addEventListener('click', function() {
         // Show navigation
         navButtons.classList.add('active');
         sectionIndicator.classList.add('active');
+        if (portfolioHeader) {
+            portfolioHeader.style.display = 'flex';
+        }
 
         // Remove cave transition
         caveTransition.classList.remove('active');

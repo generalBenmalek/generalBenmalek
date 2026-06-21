@@ -11,6 +11,21 @@
 
 </head>
 <body>
+<header class="portfolio-header" style="display: none;" id="portfolioHeader">
+    <a href="#" class="portfolio-logo" onclick="showSection(0)">⚔ generalBenmalek ⚔</a>
+    <nav class="portfolio-nav">
+        <a class="nav-link active" onclick="showSection(0)">Stats</a>
+        <a class="nav-link" onclick="showSection(3)">Inventory</a>
+        <a class="nav-link" onclick="showSection(4)">Projects</a>
+        <a class="nav-link" onclick="showSection(2)">Skills</a>
+        <a class="nav-link" onclick="showSection(1)">ColorTris</a>
+        <a class="nav-link" onclick="showSection(5)">Contact</a>
+    </nav>
+    <button class="theme-switch-btn" id="themeToggle" title="Toggle Theme">
+        <i class="fi fi-rr-sun" id="themeToggleIcon"></i>
+    </button>
+</header>
+
 <div class="bg-overlay"></div>
 <div class="particles" id="particles"></div>
 <div class="runes"></div>
@@ -105,6 +120,26 @@
                     </div>
 
                     <div class="stat-item">
+                        <div class="stat-label"><span>Mongo DB</span><span>75</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-label"><span>Dart</span><span>75</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-label"><span>PostgreSQL</span><span>75</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-label"><span>Firebase</span><span>75</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                    </div>
+
+                    <div class="stat-item">
                         <div class="stat-label"><span>FastAPI</span><span>75</span></div>
                         <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
                     </div>
@@ -130,16 +165,6 @@
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>Dart</span><span>70</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="70"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>Mongo DB</span><span>70</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="70"></div></div>
-                    </div>
-
-                    <div class="stat-item">
                         <div class="stat-label"><span>Roblox Studio</span><span>69</span></div>
                         <div class="stat-bar"><div class="stat-fill" data-value="69"></div></div>
                     </div>
@@ -147,11 +172,6 @@
                     <div class="stat-item">
                         <div class="stat-label"><span>Flutter</span><span>68</span></div>
                         <div class="stat-bar"><div class="stat-fill" data-value="68"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>PostgreSQL</span><span>65</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="65"></div></div>
                     </div>
                 </div>
 
@@ -352,84 +372,7 @@
     <!-- Projects Section -->
     <div class="section" id="projects">
         <div class="projects-grid">
-
-            <div class="project-card">
-                <div class="project-title">🤖 ENSIA Impact Chatbot</div>
-                <div class="project-description">
-                    A RAG-powered chatbot specialized for querying archived Telegram group conversations in Arabic and English, utilizing EasyOCR, PyMuPDF, BGE-M3 embeddings, and local Qwen 2.5 7B.
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Python</span>
-                    <span class="project-tag">LangChain</span>
-                    <span class="project-tag">Qdrant</span>
-                    <span class="project-tag">Ollama</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-title">⚡ Appliance Power Consumption Classification</div>
-                <div class="project-description">
-                    Time series power consumption classification of 10 categories of household appliances for a Kaggle competition using k-NN, SVM, and Random Forests.
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Python</span>
-                    <span class="project-tag">Scikit-learn</span>
-                    <span class="project-tag">Pandas</span>
-                    <span class="project-tag">Time Series</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-title">🚗 Smart Multi-Level Parking Optimization</div>
-                <div class="project-description">
-                    Vehicle allocation optimization modeled as a Stochastic Shortest Path MDP and MILP, solved using Genetic Algorithms and Simulated Annealing.
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Python</span>
-                    <span class="project-tag">MILP</span>
-                    <span class="project-tag">Genetic Algorithms</span>
-                    <span class="project-tag">MDPs</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-title">🍽️ IntelliCanteen</div>
-                <div class="project-description">
-                    A machine learning framework forecasting daily meal demand at university canteens using CatBoostRegressor, PyTorch deep learning, and Optuna.
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Python</span>
-                    <span class="project-tag">CatBoost</span>
-                    <span class="project-tag">Optuna</span>
-                    <span class="project-tag">PyTorch</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-title">🔑 YACK - Contract Keeper</div>
-                <div class="project-description">
-                    A secure mobile app for creating and signing digital contracts with zero-knowledge architecture and end-to-end encrypted chat.
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Flutter</span>
-                    <span class="project-tag">Firebase</span>
-                    <span class="project-tag">Cryptography</span>
-                    <span class="project-tag">Dart</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-title">🔥 World of Elements Battle Ground</div>
-                <div class="project-description">
-                    A Roblox fighting game featuring elemental classes, ultimate skills, bosses, and dynamic combat mechanics.
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Roblox Studio</span>
-                    <span class="project-tag">Lua</span>
-                    <span class="project-tag">Game Design</span>
-                </div>
-            </div>
-
+            <!-- Dynamically populated from JSON -->
         </div>
     </div>
 
@@ -459,11 +402,49 @@
     <button class="nav-btn" id="nextBtn">►</button>
 </div>
 
+<!-- Project Explorer Modal Overlay -->
+<div class="project-modal" id="projectModal">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+        <div class="modal-grid">
+            <div class="modal-main-info">
+                <h2 class="modal-title" id="modalTitle">Project Title</h2>
+                <h4 class="modal-subtitle" id="modalSubtitle">Subheading</h4>
+                <div class="project-tags" id="modalTags">
+                    <!-- Tech tags go here -->
+                </div>
+                <div class="modal-description-section">
+                    <h3>🛡️ Overview</h3>
+                    <p id="modalDescription">Full description of the project.</p>
+                </div>
+                <div class="modal-achievements-section">
+                    <h3>⚔️ Key Accomplishments</h3>
+                    <ul id="modalAchievements">
+                        <!-- Bullet points go here -->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-media-sidebar">
+                <h3>🗡️ Quest Assets</h3>
+                <div class="modal-actions" id="modalActions">
+                    <!-- Action buttons -->
+                </div>
+                <div class="modal-media-gallery" id="modalGallery">
+                    <!-- Video embeds or image lists -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="benmalek/js/welcome.js"></script>
 <script src="benmalek/js/config.js"></script>
 <script src="benmalek/js/colorTris.js"></script>
 <script src="benmalek/js/cardGame.js"></script>
 <script src="benmalek/js/navigator.js"></script>
+<script src="benmalek/js/theme.js"></script>
+<script src="benmalek/js/projects.js"></script>
 
 <script>
 
@@ -871,6 +852,8 @@
             memoryTimer = null;
         }
 
+        currentSection = index;
+
         document.querySelectorAll('.section').forEach(s => {
             s.classList.remove('active');
             s.style.display = 'none';
@@ -878,6 +861,15 @@
         document.getElementById(sections[index]).classList.add('active');
         document.getElementById(sections[index]).style.display = 'block';
         document.getElementById('sectionIndicator').textContent = sectionNames[index];
+
+        // Update active nav-link
+        document.querySelectorAll('.nav-link').forEach((link, idx) => {
+            if (idx === index) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
 
         if (sections[index] === 'stats') {
             animateStats();
