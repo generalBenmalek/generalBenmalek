@@ -43,6 +43,9 @@
 Python          ██████████████████░░  90%
 Lua             ████████████████░░░░  85%
 JavaScript      ███████████████░░░░░  78%
+MongoDB         ███████████████░░░░░  75%
+Dart            ███████████████░░░░░  75%
+PostgreSQL      ███████████████░░░░░  75%
 FastAPI         ███████████████░░░░░  75%
 Node.js         ███████████████░░░░░  75%
 ```
@@ -53,9 +56,8 @@ Node.js         ███████████████░░░░░  75
 #### 🛡️ Secondary Mastery
 ```text
 PyTorch         ██████████████░░░░░░  72%
+Next.js         ██████████████░░░░░░  70%
 C++             ██████████████░░░░░░  70%
-Dart            ██████████████░░░░░░  70%
-MongoDB         ██████████████░░░░░░  70%
 Flutter         █████████████░░░░░░░  68%
 ```
 
@@ -305,14 +307,14 @@ Fighting game featuring elemental classes and dynamic combat mechanics.
 <br><code>Epic</code>
 </td>
 <td align="center" width="12.5%">
-<img src="https://skillicons.dev/icons?i=nextjs" width="50" height="50" alt="Next.js"/>
-<br><b>Next.js</b>
+<img src="https://skillicons.dev/icons?i=postgres" width="50" height="50" alt="PostgreSQL"/>
+<br><b>PostgreSQL</b>
 <br><sub>⭐⭐⭐⭐</sub>
 <br><code>Epic</code>
 </td>
 <td align="center" width="12.5%">
-<img src="https://skillicons.dev/icons?i=postgres" width="50" height="50" alt="PostgreSQL"/>
-<br><b>PostgreSQL</b>
+<img src="https://skillicons.dev/icons?i=nextjs" width="50" height="50" alt="Next.js"/>
+<br><b>Next.js</b>
 <br><sub>⭐⭐⭐</sub>
 <br><code>Rare</code>
 </td>
@@ -327,14 +329,14 @@ Fighting game featuring elemental classes and dynamic combat mechanics.
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=dart" width="50" height="50" alt="Dart"/>
 <br><b>Dart</b>
-<br><sub>⭐⭐⭐</sub>
-<br><code>Rare</code>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
 </td>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=mongodb" width="50" height="50" alt="MongoDB"/>
 <br><b>MongoDB</b>
-<br><sub>⭐⭐⭐</sub>
-<br><code>Rare</code>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
 </td>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=html" width="50" height="50" alt="HTML"/>
@@ -351,8 +353,8 @@ Fighting game featuring elemental classes and dynamic combat mechanics.
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=firebase" width="50" height="50" alt="Firebase"/>
 <br><b>Firebase</b>
-<br><sub>⭐⭐⭐</sub>
-<br><code>Rare</code>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
 </td>
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=git" width="50" height="50" alt="Git"/>
@@ -363,8 +365,8 @@ Fighting game featuring elemental classes and dynamic combat mechanics.
 <td align="center" width="12.5%">
 <img src="https://skillicons.dev/icons?i=github" width="50" height="50" alt="GitHub"/>
 <br><b>GitHub</b>
-<br><sub>⭐⭐⭐</sub>
-<br><code>Rare</code>
+<br><sub>⭐⭐⭐⭐</sub>
+<br><code>Epic</code>
 </td>
 </tr>
 <tr>
