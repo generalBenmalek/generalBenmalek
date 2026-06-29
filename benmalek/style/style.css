@@ -211,7 +211,7 @@ body.exploring {
 
 .character-image img {
     width: 70%;
-    max-width: 300px;
+    max-width: 200px;
     border: 3px solid #8b7355;
     border-radius: 50%;
     object-fit: cover;
@@ -788,7 +788,7 @@ svg#hexCanvas .cost-badge .badge-text {
 .hex-legend-right {
     position: absolute;
     top: 20px;
-    right: 30px;
+    right: 180px;
     z-index: 100;
     background: rgba(10, 10, 10, 0.85);
     border: 2px solid #8b7355;
@@ -1584,6 +1584,7 @@ body.light-mode .contact-value {
 
 body.light-mode .xp-container,
 body.light-mode .character-image,
+body.light-mode .stats-container,
 body.light-mode .game-board-container,
 body.light-mode .game-stats,
 body.light-mode .control-buttons,
@@ -1630,6 +1631,45 @@ body.light-mode .trap-button:hover {
     background: #c5a059;
     color: #faf8f2;
     box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+}
+
+/* Light Mode Overrides for playButton, Exit, and Cursed Trap Buttons */
+body.light-mode #playButton {
+    background: linear-gradient(145deg, #ffffff, #faf8f2);
+    border-color: #c5a059;
+    color: #c5a059;
+}
+
+body.light-mode #playButton:hover {
+    background: #c5a059;
+    color: #faf8f2;
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+}
+
+body.light-mode #Exit {
+    background: linear-gradient(145deg, #ffffff, #fff5f5);
+    border-color: #e57373;
+    color: #e57373;
+}
+
+body.light-mode #Exit:hover {
+    background: #e57373;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(229, 115, 115, 0.5);
+}
+
+/* The trap/curse section must always remain dark to preserve flashlight gameplay */
+body.light-mode #trap .trap-button {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d) !important;
+    border-color: #d4af37 !important;
+    color: #d4af37 !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3) !important;
+}
+
+body.light-mode #trap .trap-button:hover {
+    background: #d4af37 !important;
+    color: #0a0a0a !important;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8) !important;
 }
 
 body.light-mode #Main {
@@ -1693,7 +1733,7 @@ body.light-mode #projects::-webkit-scrollbar-thumb {
 
 /* Skill Hexagons Light Mode */
 body.light-mode .hex-container {
-    background: #faf8f2;
+    /*background: #faf8f2;*/
 }
 
 body.light-mode .hex-mode-bar {
@@ -1729,7 +1769,8 @@ body.light-mode .hex-mode-switch input:checked + .hex-mode-slider::before {
     background: #5c4f33;
 }
 
-body.light-mode .hex-legend {
+body.light-mode .hex-legend,
+body.light-mode .hex-legend-right {
     background: #ffffff;
     border-color: #c5a059;
     box-shadow: 0 8px 30px rgba(92, 79, 51, 0.08);
@@ -2041,4 +2082,94 @@ body.light-mode .lamp-bulb {
 
 body {
     transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Stats Page Mode Switcher Position */
+.stats-mode-container {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    z-index: 5;
+}
+
+@media (max-width: 768px) {
+    .stats-mode-container {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* Memory Game Light Mode Overrides */
+body.light-mode .memory-header {
+    background: #ffffff;
+    border-color: #c5a059;
+    box-shadow: 0 8px 30px rgba(92, 79, 51, 0.08);
+}
+
+body.light-mode .memory-title {
+    color: #3c3320;
+    text-shadow: none;
+}
+
+body.light-mode .memory-timer {
+    color: #c5a059;
+}
+
+body.light-mode .memory-board {
+    background: #ffffff;
+    border-color: #c5a059;
+    box-shadow: 0 8px 30px rgba(92, 79, 51, 0.08);
+}
+
+body.light-mode .card-back {
+    background: linear-gradient(145deg, #fffcf0, #faf5e6);
+    border-color: #c5a059;
+    box-shadow: inset 0 0 15px rgba(197, 160, 89, 0.15);
+}
+
+body.light-mode .card-back::before {
+    border-color: #e6c887;
+}
+
+body.light-mode .card-back::after {
+    background: radial-gradient(circle, #c5a059 0%, #e6c887 100%);
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+}
+
+body.light-mode .card-front {
+    background: #ffffff;
+    border-color: #c5a059;
+}
+
+body.light-mode .card-symbol,
+body.light-mode .card-corner {
+    color: #3c3320;
+}
+
+/* contact-item Light/Dark Theme details & interaction hover styling */
+.contact-item[onclick] {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-item[onclick]:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+body.light-mode .contact-item {
+    background: rgba(197, 160, 89, 0.08);
+    border-left-color: #c5a059;
+}
+
+body.light-mode .contact-item[onclick] {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body.light-mode .contact-item[onclick]:hover {
+    background: rgba(197, 160, 89, 0.15);
 }

@@ -31,6 +31,9 @@ function addXP(amount) {
     }
     updateXPDisplay();
     updateSkillPoints();
+    if (typeof saveGameState === 'function') {
+        saveGameState();
+    }
 }
 
 function updateXPDisplay() {

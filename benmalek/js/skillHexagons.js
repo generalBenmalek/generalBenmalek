@@ -28,7 +28,13 @@ async function loadSkillsData() {
             }
         }
         
-        loadGameState();
+        if (hexMode === 'game') {
+            loadGameState();
+        } else {
+            if (window.syncModeState) {
+                window.syncModeState('view');
+            }
+        }
         renderHexMap();
     } catch (err) {
         console.error('Error loading skills:', err);
@@ -40,28 +46,62 @@ async function loadSkillsData() {
 }
 
 function setupModeToggle() {
-    const modeToggle = document.getElementById('hexModeToggle');
+    const hexToggle = document.getElementById('hexModeToggle');
+    const statsToggle = document.getElementById('statsModeToggle');
     const spDisplay = document.getElementById('hexSPDisplay');
-    if (!modeToggle) return;
 
-    const syncModeUi = () => {
-        hexMode = modeToggle.checked ? 'game' : 'view';
+    // Global Mode Synchronizer
+    window.syncModeState = function(mode) {
+        hexMode = mode;
+        localStorage.setItem('skillTree_mode', mode);
+
+        const isGame = mode === 'game';
+        
+        // Sync checkboxes
+        if (hexToggle) hexToggle.checked = isGame;
+        if (statsToggle) statsToggle.checked = isGame;
+
+        // Sync SP Display visibility
         if (spDisplay) {
-            spDisplay.style.display = hexMode === 'game' ? 'block' : 'none';
+            spDisplay.style.display = isGame ? 'block' : 'none';
         }
-    };
 
-    const applyMode = () => {
-        syncModeUi();
-        if (hexMode === 'game') {
+        if (isGame) {
+            // Load gameplay state
             loadGameState();
+        } else {
+            // View Mode: show static resume level (40) and full XP
+            playerLevel = 40;
+            playerXP = 0;
+            xpToNextLevel = 100;
+            
+            const levelEl = document.getElementById('playerLevel');
+            const xpDisplayEl = document.getElementById('xpDisplay');
+            const xpBarEl = document.getElementById('xpBar');
+            
+            if (levelEl) levelEl.textContent = "40";
+            if (xpDisplayEl) xpDisplayEl.textContent = "1000 / 1000 XP";
+            if (xpBarEl) xpBarEl.style.width = "100%";
+            
+            // Sync static SP to 10
+            skillPoints = 10;
+            updateSkillPoints();
         }
+
         renderHexMap();
     };
 
-    modeToggle.addEventListener('change', applyMode);
-    modeToggle.checked = hexMode === 'game';
-    syncModeUi();
+    const handleToggleChange = (e) => {
+        const mode = e.target.checked ? 'game' : 'view';
+        window.syncModeState(mode);
+    };
+
+    if (hexToggle) hexToggle.addEventListener('change', handleToggleChange);
+    if (statsToggle) statsToggle.addEventListener('change', handleToggleChange);
+
+    // Initial load: restore saved mode state
+    const savedMode = localStorage.getItem('skillTree_mode') || 'view';
+    window.syncModeState(savedMode);
 }
 
 function setupZoomControls() {
@@ -120,15 +160,25 @@ function loadGameState() {
         gameState = createFreshGameState();
     }
     
-    // Sync global variable
-    skillPoints = gameState.skillPoints;
+    // Sync global variables
+    skillPoints = gameState.skillPoints !== undefined ? gameState.skillPoints : 10;
+    playerLevel = gameState.playerLevel !== undefined ? gameState.playerLevel : 1;
+    playerXP = gameState.playerXP !== undefined ? gameState.playerXP : 0;
+    xpToNextLevel = gameState.xpToNextLevel !== undefined ? gameState.xpToNextLevel : 100;
+    
     updateSkillPoints();
+    if (typeof updateXPDisplay === 'function') {
+        updateXPDisplay();
+    }
 }
 
 function createFreshGameState() {
     const state = {
         version: 2,
-        skillPoints: (typeof skillPoints !== 'undefined') ? skillPoints : 10,
+        skillPoints: 10,
+        playerLevel: 1,
+        playerXP: 0,
+        xpToNextLevel: 100,
         unlockedSkills: ["Start"]
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -137,6 +187,10 @@ function createFreshGameState() {
 
 function saveGameState() {
     if (gameState) {
+        gameState.skillPoints = skillPoints;
+        gameState.playerLevel = playerLevel;
+        gameState.playerXP = playerXP;
+        gameState.xpToNextLevel = xpToNextLevel;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
     }
 }

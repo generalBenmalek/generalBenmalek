@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarnished Portfolio</title>
+    <title>General Benmalek Portfolio</title>
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
     <link rel="stylesheet" href="benmalek/style/style.css">
     <link rel="stylesheet" href="benmalek/style/cardsGame.css">
@@ -38,6 +38,15 @@
     <!-- Character Stats Section -->
     <div class="section active" id="stats">
         <h1 class="section-title">Character Stats</h1>
+        <div class="hex-legend-right">
+            <label class="hex-mode-switch" for="hexModeToggle">
+                <span class="hex-mode-label">View Mode</span>
+                <input type="checkbox" id="statsModeToggle" />
+                <span class="hex-mode-slider" aria-hidden="true"></span>
+                <span class="hex-mode-label">Game Mode</span>
+            </label>
+        </div>
+
         <div class="character-container">
             <div class="character-left-panel">
                 <div class="xp-container">
@@ -59,7 +68,7 @@
                 <div class="character-image">
                     <img src="benmalek/benmalek.png" alt="Character">
                     <div class="character-name" id="characterName">Tarnished</div>
-                    <div class="character-class">Game Development Seeker</div>
+                    <div class="character-class">AI & Game Development Seeker</div>
 
                     <div class="vital-bars">
                         <div class="vital-bar-container">
@@ -91,73 +100,43 @@
                     </h3>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>Python</span><span>90</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="90"></div></div>
+                        <div class="stat-label"><span>Game Development</span><span>74</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="74"></div></div>
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>Lua</span><span>85</span></div>
+                        <div class="stat-label"><span>Machine Learning</span><span>85</span></div>
                         <div class="stat-bar"><div class="stat-fill" data-value="85"></div></div>
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>Javascript</span><span>78</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="78"></div></div>
+                        <div class="stat-label"><span>AI Agents</span><span>80</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="80"></div></div>
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>Mongo DB</span><span>75</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                        <div class="stat-label"><span>Databases</span><span>80</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="80"></div></div>
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>Dart</span><span>75</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                        <div class="stat-label"><span>Optimization</span><span>85</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="85"></div></div>
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>PostgreSQL</span><span>75</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                        <div class="stat-label"><span>Web Development</span><span>85</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="85"></div></div>
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>Firebase</span><span>75</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
+                        <div class="stat-label"><span>Mobile Dev</span><span>82</span></div>
+                        <div class="stat-bar"><div class="stat-fill" data-value="74"></div></div>
                     </div>
 
                     <div class="stat-item">
-                        <div class="stat-label"><span>FastAPI</span><span>75</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>Node JS</span><span>75</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>PyTorch</span><span>72</span></div>
+                        <div class="stat-label"><span>DevOps & Cloud</span><span>75</span></div>
                         <div class="stat-bar"><div class="stat-fill" data-value="72"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>Next.js</span><span>70</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="70"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>C++</span><span>70</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="70"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>Roblox Studio</span><span>69</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="69"></div></div>
-                    </div>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>Flutter</span><span>68</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="68"></div></div>
                     </div>
                 </div>
 
@@ -166,11 +145,6 @@
                         <i class="fi fi-rr-shield" style="color:#d4af37;"></i>
                         Soft Skills
                     </h3>
-
-                    <div class="stat-item">
-                        <div class="stat-label"><span>Problem Solving</span><span>75</span></div>
-                        <div class="stat-bar"><div class="stat-fill" data-value="75"></div></div>
-                    </div>
 
                     <div class="stat-item">
                         <div class="stat-label"><span>Teamwork</span><span>55</span></div>
@@ -335,7 +309,7 @@
     <button class="nav-btn" id="prevBtn">◄</button>
     <button class="nav-btn" id="nextBtn">►</button>
 </div>
-
+</div>
 
 
 <script src="benmalek/js/welcome.js"></script>
