@@ -1,25 +1,16 @@
-// Skill Hexagons System — View/Game Mode with contiguous layout and localStorage persistence
-const STORAGE_KEY = 'skillHexagons_gameState';
-const MAX_LEVEL = 5;
-const RENDER_SIZE = 60;    // Render size (radius) for pointy-topped hexagons
+// Skill Hexagons System — View/Game Mode using custom hexagonTreeBuilder
+const STORAGE_KEY = 'skillHexagons_gameState_v2';
 
 let hexMode = 'view'; // 'view' or 'game'
 let skillsData = null; // loaded from skills.json
-let skillsList = [];   // flat list of skills
+let nodesList = [];   // list of Node instances
 let gameState = null;  // loaded from localStorage
-
-// Pan & Zoom state
-let zoom = 0.8;
-let panX = 0;
-let panY = 0;
-let isDragging = false;
-let startX = 0;
-let startY = 0;
+let mapInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadSkillsData();
     setupModeToggle();
-    setupPanningZooming();
+    setupZoomControls();
 });
 
 async function loadSkillsData() {
@@ -37,149 +28,81 @@ async function loadSkillsData() {
             }
         }
         
-        // Flat map skills and load their contiguous coordinates
-        skillsList = [];
-        
-        // Define Hex class with Honeycomb.js UMD if available
-        let Hex = null;
-        if (typeof Honeycomb !== 'undefined') {
-            Hex = Honeycomb.defineHex({
-                dimensions: RENDER_SIZE,
-                orientation: 'pointy'
-            });
-        }
-
-        skillsData.categories.forEach(cat => {
-            cat.skills.forEach(s => {
-                s.category = cat.id;
-
-                // Calculate pixel positions relative to center (0,0)
-                let px, py;
-                if (Hex) {
-                    const hex = new Hex([s.q, s.r]);
-                    const point = hex.toPoint();
-                    px = point.x;
-                    py = point.y;
-                } else {
-                    // Manual layout calculation as fallback if Honeycomb fails to load (offline)
-                    px = RENDER_SIZE * Math.sqrt(3) * (s.q + s.r / 2);
-                    py = RENDER_SIZE * 1.5 * s.r;
-                }
-                s.px = px;
-                s.py = py;
-
-                skillsList.push(s);
-            });
-        });
-
-        // Initialize game state (depends on loaded skills list)
         loadGameState();
-        
-        // Render
-        renderHexTree();
-        resetCenter();
+        renderHexMap();
     } catch (err) {
         console.error('Error loading skills:', err);
-        const canvas = document.getElementById('hexCanvas');
-        if (canvas) {
-            canvas.innerHTML = '<div style="text-align:center; color:#ff6b6b; font-family:Cinzel,serif; font-size:1.3rem; padding:40px;">❌ Failed to load skill data</div>';
+        const svg = document.getElementById('hexCanvas');
+        if (svg) {
+            svg.innerHTML = '<text x="50%" y="50%" text-anchor="middle" fill="#ff6b6b" font-family="Cinzel, serif" font-size="20">❌ Failed to load skill data</text>';
         }
     }
 }
 
 function setupModeToggle() {
-    const viewBtn = document.getElementById('viewModeBtn');
-    const gameBtn = document.getElementById('gameModeBtn');
-    if (!viewBtn || !gameBtn) return;
+    const modeToggle = document.getElementById('hexModeToggle');
+    const spDisplay = document.getElementById('hexSPDisplay');
+    if (!modeToggle) return;
 
-    viewBtn.addEventListener('click', () => {
-        if (hexMode === 'view') return;
-        hexMode = 'view';
-        viewBtn.classList.add('active');
-        gameBtn.classList.remove('active');
-        document.getElementById('hexSPDisplay').style.display = 'none';
-        renderHexTree();
-    });
-
-    gameBtn.addEventListener('click', () => {
-        if (hexMode === 'game') return;
-        hexMode = 'game';
-        gameBtn.classList.add('active');
-        viewBtn.classList.remove('active');
-        document.getElementById('hexSPDisplay').style.display = 'block';
-        loadGameState();
-        renderHexTree();
-    });
-}
-
-// ── Drag to Pan & Scroll to Zoom ───────────────────────────────────────
-function setupPanningZooming() {
-    const container = document.getElementById('hexContainer');
-    if (!container) return;
-
-    container.addEventListener('mousedown', (e) => {
-        // Only pan on left click drag
-        if (e.button !== 0) return;
-        isDragging = true;
-        container.style.cursor = 'grabbing';
-        startX = e.clientX - panX;
-        startY = e.clientY - panY;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        panX = e.clientX - startX;
-        panY = e.clientY - startY;
-        updateTransform();
-    });
-
-    window.addEventListener('mouseup', () => {
-        if (isDragging) {
-            isDragging = false;
-            container.style.cursor = 'grab';
+    const syncModeUi = () => {
+        hexMode = modeToggle.checked ? 'game' : 'view';
+        if (spDisplay) {
+            spDisplay.style.display = hexMode === 'game' ? 'block' : 'none';
         }
-    });
+    };
 
-    // Zoom on wheel scroll
-    container.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const zoomSpeed = 0.05;
-        if (e.deltaY < 0) {
-            zoom = Math.min(2.0, zoom + zoomSpeed);
-        } else {
-            zoom = Math.max(0.3, zoom - zoomSpeed);
+    const applyMode = () => {
+        syncModeUi();
+        if (hexMode === 'game') {
+            loadGameState();
         }
-        updateTransform();
-    }, { passive: false });
+        renderHexMap();
+    };
 
-    // Zoom buttons
-    document.getElementById('hexZoomIn').addEventListener('click', () => {
-        zoom = Math.min(2.0, zoom + 0.1);
-        updateTransform();
-    });
-    document.getElementById('hexZoomOut').addEventListener('click', () => {
-        zoom = Math.max(0.3, zoom - 0.1);
-        updateTransform();
-    });
-    document.getElementById('hexZoomReset').addEventListener('click', () => {
-        resetCenter();
-    });
+    modeToggle.addEventListener('change', applyMode);
+    modeToggle.checked = hexMode === 'game';
+    syncModeUi();
 }
 
-function resetCenter() {
-    const container = document.getElementById('hexContainer');
-    if (!container) return;
-    zoom = 0.8;
-    panX = container.clientWidth / 2;
-    panY = container.clientHeight / 2;
-    updateTransform();
-}
-
-function updateTransform() {
-    const canvas = document.getElementById('hexCanvas');
-    if (canvas) {
-        canvas.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+function setupZoomControls() {
+    const zoomInBtn = document.getElementById('hexZoomIn');
+    const zoomOutBtn = document.getElementById('hexZoomOut');
+    const zoomResetBtn = document.getElementById('hexZoomReset');
+    
+    if (zoomInBtn) {
+        zoomInBtn.addEventListener('click', () => {
+            zoomMap(0.9);
+        });
     }
+    
+    if (zoomOutBtn) {
+        zoomOutBtn.addEventListener('click', () => {
+            zoomMap(1.1);
+        });
+    }
+    
+    if (zoomResetBtn) {
+        zoomResetBtn.addEventListener('click', () => {
+            const svg = document.getElementById('hexCanvas');
+            if (svg) {
+                svg.removeAttribute('viewBox');
+            }
+            renderHexMap();
+        });
+    }
+}
+
+function zoomMap(factor) {
+    const svg = document.getElementById("hexCanvas");
+    if (!svg || !svg.viewBox) return;
+    const view = svg.viewBox.baseVal;
+    const cx = view.x + view.width / 2;
+    const cy = view.y + view.height / 2;
+    
+    view.width *= factor;
+    view.height *= factor;
+    view.x = cx - view.width / 2;
+    view.y = cy - view.height / 2;
 }
 
 // ── localStorage Game State ──────────────────────────────────────────
@@ -188,28 +111,34 @@ function loadGameState() {
     if (raw) {
         try {
             gameState = JSON.parse(raw);
+            if (!gameState.unlockedSkills) gameState.unlockedSkills = ["Start"];
+            if (!gameState.unlockedSkills.includes("Start")) gameState.unlockedSkills.push("Start");
         } catch {
             gameState = createFreshGameState();
         }
     } else {
         gameState = createFreshGameState();
     }
-    updateGameSPDisplay();
+    
+    // Sync global variable
+    skillPoints = gameState.skillPoints;
+    updateSkillPoints();
 }
 
 function createFreshGameState() {
-    const state = { version: 1, skillPoints: (typeof skillPoints !== 'undefined') ? skillPoints : 10, skills: {} };
-    skillsList.forEach(s => {
-        state.skills[s.id] = { level: s.id === 'core' ? 5 : 0, percentage: s.id === 'core' ? 100 : 0 };
-    });
-    saveGameState(state);
+    const state = {
+        version: 2,
+        skillPoints: (typeof skillPoints !== 'undefined') ? skillPoints : 10,
+        unlockedSkills: ["Start"]
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     return state;
 }
 
-// Helper function to save game state
-function saveGameState(state) {
-    if (!state) state = gameState;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+function saveGameState() {
+    if (gameState) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
+    }
 }
 
 function updateGameSPDisplay() {
@@ -217,167 +146,220 @@ function updateGameSPDisplay() {
     if (el && gameState) {
         el.textContent = gameState.skillPoints;
     }
-}
-
-// ── Hexagon Tree Rendering ───────────────────────────────────────────
-function renderHexTree() {
-    const canvas = document.getElementById('hexCanvas');
-    if (!canvas) return;
-    canvas.innerHTML = '';
-
-    // Draw hexagons directly (no connecting line branches!)
-    skillsList.forEach(s => {
-        const data = getSkillDisplayData(s);
-        canvas.appendChild(createHexCell(s, data));
-    });
-}
-
-function getSkillDisplayData(skill) {
-    if (hexMode === 'game' && gameState) {
-        const gs = gameState.skills[skill.id];
-        if (gs) {
-            return {
-                level: gs.level,
-                percentage: gs.percentage,
-                rarity: levelToRarity(gs.level)
-            };
-        }
-        return { level: 0, percentage: 0, rarity: 'common' };
+    const gameSpDisplay = document.getElementById('gameSkillPoints');
+    if (gameSpDisplay && gameState) {
+        gameSpDisplay.textContent = gameState.skillPoints;
     }
-    // View mode — use JSON data
-    return {
-        level: skill.level,
-        percentage: skill.percentage,
-        rarity: skill.rarity
+}
+
+// ── Hexagon Map Rendering ───────────────────────────────────────────
+function renderHexMap() {
+    const svg = document.getElementById('hexCanvas');
+    if (!svg) return;
+    
+    // Create list of Node objects using custom hexagonTreeBuilder classes
+    nodesList = skillsData.nodes.map(n => {
+        const state = getSkillState(n.id);
+        const nodeObj = new Node(n.name, n.r, n.c);
+        nodeObj.id = n.id;
+        nodeObj.icon = n.icon;
+        nodeObj.cost = n.cost;
+        nodeObj.isStart = !!n.isStart;
+        nodeObj.isSetPiece = !!n.isSetPiece;
+        nodeObj.renderer = getRendererForState(n, state);
+        return nodeObj;
+    });
+    
+    // Instantiate and build Map
+    mapInstance = new HexagonMap(
+        "Skills Map",
+        45, // hexagon radius
+        nodesList,
+        6 // gap
+    );
+    
+    mapInstance.buildMap(svg);
+}
+
+function getSkillState(nodeId) {
+    if (hexMode === 'view') {
+        return 'unlocked'; // All unlocked in View Mode
+    }
+    
+    if (!gameState) return 'locked';
+    if (gameState.unlockedSkills.includes(nodeId)) {
+        return 'unlocked';
+    }
+    
+    const nConfig = skillsData.nodes.find(n => n.id === nodeId);
+    if (nConfig && nConfig.isStart) {
+        return 'unlocked';
+    }
+    
+    // Find neighbors using Node's native coords finder
+    const tempNodes = skillsData.nodes.map(n => {
+        const nodeObj = new Node(n.name, n.r, n.c);
+        nodeObj.id = n.id;
+        return nodeObj;
+    });
+    
+    const currentNode = tempNodes.find(n => n.id === nodeId);
+    if (!currentNode) return 'locked';
+    
+    const neighbors = currentNode.getNeighbors(tempNodes);
+    const hasUnlockedNeighbor = neighbors.some(neighbor => {
+        const neighborConfig = skillsData.nodes.find(n => n.id === neighbor.id);
+        return gameState.unlockedSkills.includes(neighbor.id) || (neighborConfig && neighborConfig.isStart);
+    });
+    
+    if (hasUnlockedNeighbor && gameState.skillPoints >= nConfig.cost) {
+        return 'available';
+    }
+    
+    return 'locked';
+}
+
+function getRendererForState(node, state) {
+    return (g, size, nodeObj) => {
+        g.setAttribute("class", `hex-group ${state}`);
+        
+        // polygon
+        const hex = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        let pts = [];
+        for (let i = 0; i < 6; i++) {
+            const angle = Math.PI / 180 * (60 * i - 30);
+            pts.push(`${size * Math.cos(angle)},${size * Math.sin(angle)}`);
+        }
+        hex.setAttribute("points", pts.join(" "));
+        
+        let classes = `hex-node ${state} cat-${node.category}`;
+        if (node.isStart) classes += " start-node";
+        if (node.isSetPiece) classes += " set-piece";
+        hex.setAttribute("class", classes);
+        hex.setAttribute("data-node-id", node.id);
+        
+        if (hexMode === 'game' && state === 'available') {
+            hex.addEventListener("click", (e) => {
+                e.stopPropagation();
+                unlockSkill(node.id, node.cost);
+            });
+        }
+        
+        g.appendChild(hex);
+
+        // Image Logo or Icon/Emoji fallback
+        if (node.logo) {
+            const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+            img.setAttribute("href", node.logo);
+            img.setAttribute("x", -size * 0.35);
+            img.setAttribute("y", -size * 0.45);
+            img.setAttribute("width", size * 0.7);
+            img.setAttribute("height", size * 0.7);
+            img.setAttribute("pointer-events", "none");
+            
+            img.onerror = () => {
+                img.remove();
+                if (node.icon) {
+                    const textIcon = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    textIcon.textContent = node.icon;
+                    textIcon.setAttribute("class", "hex-icon");
+                    textIcon.setAttribute("font-size", size * 0.55);
+                    textIcon.setAttribute("text-anchor", "middle");
+                    textIcon.setAttribute("dominant-baseline", "central");
+                    textIcon.setAttribute("y", -size * 0.12);
+                    textIcon.setAttribute("pointer-events", "none");
+                    g.appendChild(textIcon);
+                }
+            };
+            g.appendChild(img);
+        } else if (node.icon) {
+            const textIcon = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            textIcon.textContent = node.icon;
+            textIcon.setAttribute("class", "hex-icon");
+            textIcon.setAttribute("font-size", size * 0.55);
+            textIcon.setAttribute("text-anchor", "middle");
+            textIcon.setAttribute("dominant-baseline", "central");
+            textIcon.setAttribute("y", -size * 0.12);
+            textIcon.setAttribute("pointer-events", "none");
+            g.appendChild(textIcon);
+        }
+
+        // Skill Name
+        if (node.name) {
+            const textName = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            textName.textContent = node.name;
+            textName.setAttribute("class", "hex-label");
+            
+            // Dynamic font sizing to prevent hexagon overflow
+            let fontSize = size * 0.22;
+            if (node.name.length > 15) {
+                fontSize = size * 0.13;
+            } else if (node.name.length > 10) {
+                fontSize = size * 0.17;
+            }
+            
+            textName.setAttribute("font-size", fontSize);
+            textName.setAttribute("text-anchor", "middle");
+            textName.setAttribute("dominant-baseline", "central");
+            textName.setAttribute("y", node.logo ? (size * 0.35) : 0);
+            textName.setAttribute("pointer-events", "none");
+            g.appendChild(textName);
+        }
+        
+        // SP Cost Badge (available nodes)
+        if (hexMode === 'game' && state === 'available' && node.cost > 0) {
+            const costBadge = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            costBadge.setAttribute("class", "cost-badge");
+            costBadge.setAttribute("transform", `translate(0, ${size * 0.72})`);
+            
+            const badgeBg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            badgeBg.setAttribute("x", -18);
+            badgeBg.setAttribute("y", -8);
+            badgeBg.setAttribute("width", 36);
+            badgeBg.setAttribute("height", 16);
+            badgeBg.setAttribute("rx", 4);
+            badgeBg.setAttribute("class", "badge-bg");
+            costBadge.appendChild(badgeBg);
+            
+            const badgeText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            badgeText.textContent = `${node.cost} SP`;
+            badgeText.setAttribute("text-anchor", "middle");
+            badgeText.setAttribute("dominant-baseline", "central");
+            badgeText.setAttribute("class", "badge-text");
+            badgeText.setAttribute("font-size", 9);
+            costBadge.appendChild(badgeText);
+            
+            g.appendChild(costBadge);
+        }
     };
 }
 
-function levelToRarity(level) {
-    const map = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
-    return map[Math.min(level, MAX_LEVEL) - 1] || 'common';
-}
-
-function createHexCell(skill, data) {
-    const cell = document.createElement('div');
-    cell.className = 'hex-cell';
-    cell.style.left = skill.px + 'px';
-    cell.style.top = skill.py + 'px';
-    cell.style.transform = 'translate(-50%, -50%)';
-
-    // Rarity glow effect
-    if (data.rarity === 'legendary') cell.classList.add('legendary-glow');
-    else if (data.rarity === 'epic') cell.classList.add('epic-glow');
-
-    // Set piece (mastery nodes) thick purple border
-    const setPieces = ['fullstack_master', 'ai_master', 'game_master', 'ds_algo', 'rl', 'security'];
-    if (setPieces.includes(skill.id)) {
-        cell.classList.add('set-piece');
-    }
-
-    // Locked status in game mode
-    const isLocked = hexMode === 'game' && data.level === 0;
-    if (isLocked) {
-        cell.classList.add('locked');
-    }
-
-    // Border layer (colored by category)
-    const border = document.createElement('div');
-    border.className = `hex-cell-border cat-${skill.category}`;
-    cell.appendChild(border);
-
-    // Inner content
-    const inner = document.createElement('div');
-    inner.className = 'hex-inner';
-
-    // Name
-    const name = document.createElement('div');
-    name.className = 'hex-name';
-    name.textContent = skill.name;
-    inner.appendChild(name);
-
-    // Level pips (●●●○○)
-    const pips = document.createElement('div');
-    pips.className = 'hex-level-pips';
-    for (let i = 1; i <= MAX_LEVEL; i++) {
-        const pip = document.createElement('div');
-        pip.className = 'hex-pip' + (i <= data.level ? ' filled' : '');
-        pips.appendChild(pip);
-    }
-    inner.appendChild(pips);
-
-    cell.appendChild(inner);
-
-    // Game mode: unlock/upgrade logic
-    if (hexMode === 'game') {
-        const parentNode = skillsList.find(p => p.id === skill.parent);
-        const parentUnlocked = !parentNode || (gameState && gameState.skills[parentNode.id] && gameState.skills[parentNode.id].level > 0);
-        
-        // Upgrade button on hover (if unlockable)
-        if (parentUnlocked && skill.id !== 'core') {
-            const btn = document.createElement('button');
-            btn.className = 'hex-upgrade-btn';
-            
-            const cost = skill.cost || 2;
-            const canUpgrade = data.level < MAX_LEVEL && gameState && gameState.skillPoints >= cost;
-            btn.textContent = data.level >= MAX_LEVEL ? 'MAX' : `+${cost} SP`;
-            btn.disabled = !canUpgrade;
-            
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                upgradeSkill(skill.id, cost);
-            });
-            inner.appendChild(btn);
-        }
-    }
-
-    return cell;
-}
-
-// ── Game Mode: Upgrade Logic ─────────────────────────────────────────
-function upgradeSkill(skillId, cost) {
-    if (!gameState || hexMode !== 'game') return;
+function unlockSkill(nodeId, cost) {
+    if (hexMode !== 'game' || !gameState) return;
     if (gameState.skillPoints < cost) return;
-
-    const gs = gameState.skills[skillId];
-    if (!gs || gs.level >= MAX_LEVEL) return;
-
-    gs.level += 1;
-    gs.percentage = Math.min(100, Math.round((gs.level / MAX_LEVEL) * 100));
+    
+    // Deduct cost and unlock
     gameState.skillPoints -= cost;
-
+    gameState.unlockedSkills.push(nodeId);
+    
+    // Sync global variable
+    skillPoints = gameState.skillPoints;
+    
     saveGameState();
-    updateGameSPDisplay();
-    renderHexTree();
+    updateSkillPoints();
+    renderHexMap();
 }
 
 window.addSkillPoints = function(amount) {
     if (!gameState) {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-            try {
-                gameState = JSON.parse(raw);
-            } catch {
-                gameState = createFreshGameState();
-            }
-        } else {
-            gameState = createFreshGameState();
-        }
+        loadGameState();
     }
-
-    if (gameState) {
-        gameState.skillPoints = (gameState.skillPoints || 0) + amount;
-        saveGameState();
-        updateGameSPDisplay();
-    }
-
-    if (typeof skillPoints !== 'undefined') {
-        skillPoints += amount;
-        if (typeof updateSkillPoints === 'function') {
-            updateSkillPoints();
-        }
-    }
-
+    gameState.skillPoints = (gameState.skillPoints || 0) + amount;
+    skillPoints = gameState.skillPoints;
+    saveGameState();
+    updateSkillPoints();
+    
     if (hexMode === 'game') {
-        renderHexTree();
+        renderHexMap();
     }
 };

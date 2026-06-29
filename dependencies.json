@@ -1,0 +1,486 @@
+[
+  {
+    "id": "Start",
+    "name": "Core",
+    "dependencies": []
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "cplusplus",
+    "name": "C++",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "csharp",
+    "name": "C#",
+    "dependencies": [
+      "cplusplus"
+    ]
+  },
+  {
+    "id": "java",
+    "name": "Java",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "rust",
+    "name": "Rust",
+    "dependencies": [
+      "cplusplus"
+    ]
+  },
+  {
+    "id": "go",
+    "name": "Go",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "ds_algo",
+    "name": "DSA",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "complexity",
+    "name": "Complexity",
+    "dependencies": [
+      "ds_algo"
+    ]
+  },
+  {
+    "id": "system_design",
+    "name": "Sys Design",
+    "dependencies": [
+      "ds_algo"
+    ]
+  },
+  {
+    "id": "graph_algos",
+    "name": "Graph Algos",
+    "dependencies": [
+      "ds_algo"
+    ]
+  },
+  {
+    "id": "dynamic_prog",
+    "name": "Dynamic Prog",
+    "dependencies": [
+      "ds_algo"
+    ]
+  },
+  {
+    "id": "databases",
+    "name": "Databases",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "sql",
+    "name": "SQL",
+    "dependencies": [
+      "databases"
+    ]
+  },
+  {
+    "id": "data_eng",
+    "name": "Data Eng",
+    "dependencies": [
+      "sql"
+    ]
+  },
+  {
+    "id": "postgresql",
+    "name": "PostgreSQL",
+    "dependencies": [
+      "sql"
+    ]
+  },
+  {
+    "id": "mysql",
+    "name": "MySQL",
+    "dependencies": [
+      "sql"
+    ]
+  },
+  {
+    "id": "nosql",
+    "name": "NoSQL",
+    "dependencies": [
+      "databases"
+    ]
+  },
+  {
+    "id": "mongodb",
+    "name": "MongoDB",
+    "dependencies": [
+      "nosql"
+    ]
+  },
+  {
+    "id": "redis",
+    "name": "Redis",
+    "dependencies": [
+      "nosql"
+    ]
+  },
+  {
+    "id": "etl",
+    "name": "ETL Pipelines",
+    "dependencies": [
+      "data_eng"
+    ]
+  },
+  {
+    "id": "spark",
+    "name": "Apache Spark",
+    "dependencies": [
+      "data_eng"
+    ]
+  },
+  {
+    "id": "dataanalysis",
+    "name": "Data Analysis",
+    "dependencies": [
+      "pandas"
+    ]
+  },
+  {
+    "id": "pandas",
+    "name": "Pandas",
+    "dependencies": [
+      "dataanalysis",
+      "numpy"
+    ]
+  },
+  {
+    "id": "numpy",
+    "name": "NumPy",
+    "dependencies": [
+      "pandas",
+      "python"
+    ]
+  },
+  {
+    "id": "viz",
+    "name": "Visualization",
+    "dependencies": [
+      "pandas"
+    ]
+  },
+  {
+    "id": "ml",
+    "name": "ML",
+    "dependencies": [
+      "python",
+      "ds_algo"
+    ]
+  },
+  {
+    "id": "sklearn",
+    "name": "scikit-learn",
+    "dependencies": [
+      "ml"
+    ]
+  },
+  {
+    "id": "tensorflow",
+    "name": "TensorFlow",
+    "dependencies": [
+      "ml"
+    ]
+  },
+  {
+    "id": "pytorch",
+    "name": "PyTorch",
+    "dependencies": [
+      "ml"
+    ]
+  },
+  {
+    "id": "deeplearning",
+    "name": "Deep Learning",
+    "dependencies": [
+      "tensorflow",
+      "pytorch"
+    ]
+  },
+  {
+    "id": "nlp",
+    "name": "NLP",
+    "dependencies": [
+      "deeplearning"
+    ]
+  },
+  {
+    "id": "cv",
+    "name": "Comp Vision",
+    "dependencies": [
+      "deeplearning"
+    ]
+  },
+  {
+    "id": "mlops",
+    "name": "MLOps",
+    "dependencies": [
+      "tensorflow"
+    ]
+  },
+  {
+    "id": "rl",
+    "name": "RL",
+    "dependencies": [
+      "deeplearning"
+    ]
+  },
+  {
+    "id": "transformers",
+    "name": "Transformers",
+    "dependencies": [
+      "nlp"
+    ]
+  },
+  {
+    "id": "ai_master",
+    "name": "AI Mastery",
+    "dependencies": [
+      "rl",
+      "transformers",
+      "cv"
+    ]
+  },
+  {
+    "id": "frontend",
+    "name": "Frontend",
+    "dependencies": [
+      "javascript"
+    ]
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "dependencies": [
+      "frontend"
+    ]
+  },
+  {
+    "id": "vue",
+    "name": "Vue.js",
+    "dependencies": [
+      "frontend"
+    ]
+  },
+  {
+    "id": "svelte",
+    "name": "Svelte",
+    "dependencies": [
+      "frontend"
+    ]
+  },
+  {
+    "id": "ssr",
+    "name": "Next.js",
+    "dependencies": [
+      "react"
+    ]
+  },
+  {
+    "id": "backend",
+    "name": "Backend",
+    "dependencies": [
+      "javascript"
+    ]
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js",
+    "dependencies": [
+      "backend"
+    ]
+  },
+  {
+    "id": "express",
+    "name": "Express.js",
+    "dependencies": [
+      "nodejs"
+    ]
+  },
+  {
+    "id": "nest",
+    "name": "NestJS",
+    "dependencies": [
+      "nodejs"
+    ]
+  },
+  {
+    "id": "apis",
+    "name": "REST/GraphQL",
+    "dependencies": [
+      "backend"
+    ]
+  },
+  {
+    "id": "fullstack_master",
+    "name": "Full-Stack Master",
+    "dependencies": [
+      "backend",
+      "react",
+      "sql"
+    ]
+  },
+  {
+    "id": "mobile",
+    "name": "Mobile Dev",
+    "dependencies": [
+      "javascript"
+    ]
+  },
+  {
+    "id": "flutter",
+    "name": "Flutter",
+    "dependencies": [
+      "mobile"
+    ]
+  },
+  {
+    "id": "reactnative",
+    "name": "React Native",
+    "dependencies": [
+      "react"
+    ]
+  },
+  {
+    "id": "android",
+    "name": "Android Kotlin",
+    "dependencies": [
+      "mobile",
+      "java"
+    ]
+  },
+  {
+    "id": "cloud",
+    "name": "Cloud",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "dependencies": [
+      "cloud"
+    ]
+  },
+  {
+    "id": "kubernetes",
+    "name": "Kubernetes",
+    "dependencies": [
+      "docker"
+    ]
+  },
+  {
+    "id": "ci_cd",
+    "name": "CI/CD",
+    "dependencies": [
+      "docker",
+      "cloud"
+    ]
+  },
+  {
+    "id": "aws",
+    "name": "AWS",
+    "dependencies": [
+      "cloud"
+    ]
+  },
+  {
+    "id": "security",
+    "name": "Security",
+    "dependencies": [
+      "cloud",
+      "backend"
+    ]
+  },
+  {
+    "id": "web3",
+    "name": "Web3",
+    "dependencies": [
+      "javascript"
+    ]
+  },
+  {
+    "id": "solidity",
+    "name": "Solidity",
+    "dependencies": [
+      "web3"
+    ]
+  },
+  {
+    "id": "testing",
+    "name": "Testing",
+    "dependencies": [
+      "Start"
+    ]
+  },
+  {
+    "id": "unit_tests",
+    "name": "Unit Tests",
+    "dependencies": [
+      "testing"
+    ]
+  },
+  {
+    "id": "integration",
+    "name": "Integration",
+    "dependencies": [
+      "testing"
+    ]
+  },
+  {
+    "id": "e2e",
+    "name": "E2E Tests",
+    "dependencies": [
+      "testing"
+    ]
+  },
+  {
+    "id": "silent_1",
+    "name": "Path",
+    "dependencies": []
+  },
+  {
+    "id": "silent_3",
+    "name": "Path",
+    "dependencies": []
+  },
+  {
+    "id": "silent_4",
+    "name": "Path",
+    "dependencies": []
+  },
+  {
+    "id": "silent_5",
+    "name": "Path",
+    "dependencies": []
+  }
+]

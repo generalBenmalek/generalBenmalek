@@ -1,5 +1,6 @@
 // Projects Loader & Sidebar Navigator
 const projectIds = [
+    "0_cv",
     "1_esia_impact_chatbot",
     "2_appliance_power_classification",
     "3_smart_parking_optimization",

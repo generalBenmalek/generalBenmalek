@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hex Map</title>
+
+    <style>
+        html, body{
+            margin:0;
+            width:100%;
+            height:100%;
+            overflow:hidden;
+            background:#222;
+        }
+
+        #map{
+            width:100%;
+            height:100%;
+            cursor:grab;
+        }
+
+        #map:active{
+            cursor:grabbing;
+        }
+
+        .hex{
+            fill:white;
+            stroke:black;
+            stroke-width:2;
+        }
+
+        .label{
+            font-family:Arial;
+            font-size:12px;
+            text-anchor:middle;
+            dominant-baseline:middle;
+            pointer-events:none;
+        }
+    </style>
+</head>
+<body>
+
+<svg id="map"></svg>
+
+<script src="hexagonTreeBuilder.js"></script>
+<script>
+    // ---------- Helper ----------
+
+    function skillRenderer(icon, state) {
+
+        const colors = {
+            locked: {
+                fill: "#555",
+                stroke: "#888",
+                opacity: 0.45
+            },
+            available: {
+                fill: "#2196F3",
+                stroke: "#7CC8FF",
+                opacity: 1
+            },
+            unlocked: {
+                fill: "#FFFFFF",
+                stroke: "#FFD54F",
+                opacity: 1
+            }
+        };
+
+        return (g, size, node) => {
+
+            const c = colors[state];
+
+            // Hexagon
+            const hex = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "polygon"
+            );
+
+            let pts = [];
+
+            for (let i = 0; i < 6; i++) {
+
+                const angle = Math.PI / 180 * (60 * i - 30);
+
+                pts.push(
+                    `${size * Math.cos(angle)},${size * Math.sin(angle)}`
+                );
+            }
+
+            hex.setAttribute("points", pts.join(" "));
+            hex.setAttribute("fill", c.fill);
+            hex.setAttribute("stroke", c.stroke);
+            hex.setAttribute("stroke-width", 3);
+            hex.setAttribute("opacity", c.opacity);
+
+            g.appendChild(hex);
+
+            // Icon
+            const text = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text"
+            );
+
+            text.textContent = icon;
+            text.setAttribute("font-size", size * 0.9);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("dominant-baseline", "central");
+            text.setAttribute("opacity", c.opacity);
+
+            g.appendChild(text);
+        };
+    }
+
+    // ---------- Skill Tree ----------
+
+    const nodes = [
+
+        // Root
+        new Node(
+            "Start",
+            0,
+            0,
+            skillRenderer("⭐", "unlocked")
+        ),
+
+        // Tier 1
+        new Node(
+            "Fire",
+            1,
+            0,
+            skillRenderer("🔥", "available")
+        ),
+
+        new Node(
+            "Water",
+            1,
+            1,
+            skillRenderer("💧", "locked")
+        ),
+
+        // Tier 2
+        new Node(
+            "Wind",
+            2,
+            0,
+            skillRenderer("🌪️", "locked")
+        ),
+
+        new Node(
+            "Earth",
+            2,
+            1,
+            skillRenderer("🪨", "available")
+        ),
+
+        new Node(
+            "Ice",
+            2,
+            2,
+            skillRenderer("❄️", "locked")
+        ),
+
+        // Tier 3
+        new Node(
+            "Lightning",
+            3,
+            1,
+            skillRenderer("⚡", "locked")
+        ),
+
+        new Node(
+            "Nature",
+            3,
+            2,
+            skillRenderer("🌿", "locked")
+        ),
+
+        new Node(
+            "Shadow",
+            3,
+            3,
+            skillRenderer("🌑", "locked")
+        ),
+
+        // Tier 4
+        new Node(
+            "Phoenix",
+            4,
+            2,
+            skillRenderer("🦅", "locked")
+        ),
+
+        new Node(
+            "Dragon",
+            5,
+            2,
+            skillRenderer("🐉", "locked")
+        )
+
+    ];
+
+    const map = new HexagonMap(
+        "Magic Tree",
+        45,
+        nodes
+    );
+
+    map.buildMap(
+        document.getElementById("map")
+    );
+</script>
+</body>
+</html>

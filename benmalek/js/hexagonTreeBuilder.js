@@ -53,6 +53,11 @@ class HexagonMap{
 
     buildMap(svg){
 
+        let preservedViewBox = null;
+        if (svg.hasAttribute("viewBox")) {
+            preservedViewBox = svg.getAttribute("viewBox");
+        }
+
         svg.innerHTML="";
 
         const size=this.size;
@@ -122,15 +127,29 @@ class HexagonMap{
             group.appendChild(container);
         }
         //-------------------
-        // Fit map
+        // Fit map / Center on Core
         //-------------------
 
-        let box=group.getBBox();
-
-        svg.setAttribute(
-            "viewBox",
-            `${box.x-40} ${box.y-40} ${box.width+80} ${box.height+80}`
-        );
+        if (preservedViewBox) {
+            svg.setAttribute("viewBox", preservedViewBox);
+        } else {
+            const coreNode = this.nodes.find(n => n.isStart || n.id === 'Start' || n.name === 'Core' || n.id === 'core');
+            if (coreNode) {
+                const [cx, cy] = coreNode.getPosition(size, gap);
+                const vw = svg.clientWidth || 1000;
+                const vh = svg.clientHeight || 800;
+                svg.setAttribute(
+                    "viewBox",
+                    `${cx - vw / 2} ${cy - vh / 2} ${vw} ${vh}`
+                );
+            } else {
+                let box = group.getBBox();
+                svg.setAttribute(
+                    "viewBox",
+                    `${box.x - 40} ${box.y - 40} ${box.width + 80} ${box.height + 80}`
+                );
+            }
+        }
 
         //-------------------
         // Pan

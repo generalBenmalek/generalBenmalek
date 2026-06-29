@@ -15,8 +15,8 @@
     {
       "id": "python",
       "name": "Python",
-      "r": 17,
-      "c": 17,
+      "r": 13,
+      "c": 8,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
       "cost": 3,
       "parents": [
@@ -29,7 +29,7 @@
     {
       "id": "javascript",
       "name": "JavaScript",
-      "r": 15,
+      "r": 13,
       "c": 17,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
       "cost": 3,
@@ -43,7 +43,7 @@
     {
       "id": "cplusplus",
       "name": "C++",
-      "r": 16,
+      "r": 13,
       "c": 18,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
       "cost": 3,
@@ -57,8 +57,8 @@
     {
       "id": "csharp",
       "name": "C#",
-      "r": 17,
-      "c": 20,
+      "r": 14,
+      "c": 19,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
       "cost": 3,
       "parents": [
@@ -69,10 +69,52 @@
       "category": "languages"
     },
     {
+      "id": "java",
+      "name": "Java",
+      "r": 15,
+      "c": 18,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+      "cost": 3,
+      "parents": [
+        "Start"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "languages"
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "r": 12,
+      "c": 19,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg",
+      "cost": 4,
+      "parents": [
+        "cplusplus"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "languages"
+    },
+    {
+      "id": "go",
+      "name": "Go",
+      "r": 11,
+      "c": 14,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg",
+      "cost": 4,
+      "parents": [
+        "Start"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "languages"
+    },
+    {
       "id": "ds_algo",
       "name": "DSA",
       "r": 15,
-      "c": 12,
+      "c": 13,
       "logo": null,
       "cost": 4,
       "parents": [
@@ -85,8 +127,8 @@
     {
       "id": "complexity",
       "name": "Complexity",
-      "r": 16,
-      "c": 11,
+      "r": 13,
+      "c": 13,
       "logo": null,
       "cost": 2,
       "parents": [
@@ -100,7 +142,7 @@
       "id": "system_design",
       "name": "Sys Design",
       "r": 15,
-      "c": 10,
+      "c": 11,
       "logo": null,
       "cost": 5,
       "parents": [
@@ -114,7 +156,7 @@
       "id": "graph_algos",
       "name": "Graph Algos",
       "r": 14,
-      "c": 11,
+      "c": 12,
       "logo": null,
       "cost": 3,
       "parents": [
@@ -127,7 +169,7 @@
     {
       "id": "dynamic_prog",
       "name": "Dynamic Prog",
-      "r": 14,
+      "r": 13,
       "c": 12,
       "logo": null,
       "cost": 3,
@@ -281,8 +323,8 @@
     {
       "id": "dataanalysis",
       "name": "Data Analysis",
-      "r": 20,
-      "c": 16,
+      "r": 10,
+      "c": 6,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg",
       "cost": 4,
       "parents": [
@@ -295,8 +337,8 @@
     {
       "id": "pandas",
       "name": "Pandas",
-      "r": 19,
-      "c": 16,
+      "r": 10,
+      "c": 7,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg",
       "cost": 4,
       "parents": [
@@ -310,8 +352,8 @@
     {
       "id": "numpy",
       "name": "NumPy",
-      "r": 18,
-      "c": 17,
+      "r": 12,
+      "c": 8,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg",
       "cost": 4,
       "parents": [
@@ -325,8 +367,8 @@
     {
       "id": "viz",
       "name": "Visualization",
-      "r": 20,
-      "c": 17,
+      "r": 9,
+      "c": 6,
       "logo": null,
       "cost": 3,
       "parents": [
@@ -339,12 +381,13 @@
     {
       "id": "ml",
       "name": "ML",
-      "r": 18,
-      "c": 18,
+      "r": 9,
+      "c": 11,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg",
       "cost": 5,
       "parents": [
-        "python"
+        "python",
+        "ds_algo"
       ],
       "isStart": false,
       "isSetPiece": false,
@@ -353,8 +396,8 @@
     {
       "id": "sklearn",
       "name": "scikit-learn",
-      "r": 19,
-      "c": 18,
+      "r": 8,
+      "c": 11,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg",
       "cost": 4,
       "parents": [
@@ -367,8 +410,8 @@
     {
       "id": "tensorflow",
       "name": "TensorFlow",
-      "r": 20,
-      "c": 19,
+      "r": 8,
+      "c": 12,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg",
       "cost": 6,
       "parents": [
@@ -381,8 +424,8 @@
     {
       "id": "pytorch",
       "name": "PyTorch",
-      "r": 19,
-      "c": 19,
+      "r": 9,
+      "c": 12,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
       "cost": 6,
       "parents": [
@@ -395,8 +438,8 @@
     {
       "id": "deeplearning",
       "name": "Deep Learning",
-      "r": 20,
-      "c": 20,
+      "r": 7,
+      "c": 13,
       "logo": null,
       "cost": 7,
       "parents": [
@@ -410,8 +453,8 @@
     {
       "id": "nlp",
       "name": "NLP",
-      "r": 21,
-      "c": 21,
+      "r": 6,
+      "c": 13,
       "logo": null,
       "cost": 7,
       "parents": [
@@ -424,8 +467,8 @@
     {
       "id": "cv",
       "name": "Comp Vision",
-      "r": 19,
-      "c": 21,
+      "r": 6,
+      "c": 14,
       "logo": null,
       "cost": 7,
       "parents": [
@@ -438,8 +481,8 @@
     {
       "id": "mlops",
       "name": "MLOps",
-      "r": 21,
-      "c": 18,
+      "r": 6,
+      "c": 11,
       "logo": null,
       "cost": 6,
       "parents": [
@@ -452,8 +495,8 @@
     {
       "id": "rl",
       "name": "RL",
-      "r": 20,
-      "c": 22,
+      "r": 7,
+      "c": 15,
       "logo": null,
       "cost": 7,
       "parents": [
@@ -466,8 +509,8 @@
     {
       "id": "transformers",
       "name": "Transformers",
-      "r": 22,
-      "c": 21,
+      "r": 4,
+      "c": 13,
       "logo": null,
       "cost": 7,
       "parents": [
@@ -478,10 +521,26 @@
       "category": "ml"
     },
     {
+      "id": "ai_master",
+      "name": "AI Mastery",
+      "r": 4,
+      "c": 15,
+      "logo": null,
+      "cost": 10,
+      "parents": [
+        "rl",
+        "transformers",
+        "cv"
+      ],
+      "isStart": false,
+      "isSetPiece": true,
+      "category": "ml"
+    },
+    {
       "id": "frontend",
       "name": "Frontend",
-      "r": 13,
-      "c": 18,
+      "r": 10,
+      "c": 21,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
       "cost": 4,
       "parents": [
@@ -494,8 +553,8 @@
     {
       "id": "react",
       "name": "React",
-      "r": 11,
-      "c": 18,
+      "r": 9,
+      "c": 22,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
       "cost": 4,
       "parents": [
@@ -508,9 +567,23 @@
     {
       "id": "vue",
       "name": "Vue.js",
-      "r": 11,
-      "c": 19,
+      "r": 10,
+      "c": 23,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
+      "cost": 4,
+      "parents": [
+        "frontend"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "web"
+    },
+    {
+      "id": "svelte",
+      "name": "Svelte",
+      "r": 11,
+      "c": 23,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg",
       "cost": 4,
       "parents": [
         "frontend"
@@ -522,8 +595,8 @@
     {
       "id": "ssr",
       "name": "Next.js",
-      "r": 10,
-      "c": 18,
+      "r": 8,
+      "c": 25,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
       "cost": 5,
       "parents": [
@@ -536,8 +609,8 @@
     {
       "id": "backend",
       "name": "Backend",
-      "r": 14,
-      "c": 19,
+      "r": 12,
+      "c": 22,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
       "cost": 4,
       "parents": [
@@ -564,8 +637,8 @@
     {
       "id": "express",
       "name": "Express.js",
-      "r": 15,
-      "c": 21,
+      "r": 16,
+      "c": 22,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
       "cost": 4,
       "parents": [
@@ -579,7 +652,7 @@
       "id": "nest",
       "name": "NestJS",
       "r": 14,
-      "c": 22,
+      "c": 23,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
       "cost": 5,
       "parents": [
@@ -593,7 +666,7 @@
       "id": "apis",
       "name": "REST/GraphQL",
       "r": 13,
-      "c": 20,
+      "c": 25,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
       "cost": 4,
       "parents": [
@@ -604,10 +677,26 @@
       "category": "web"
     },
     {
+      "id": "fullstack_master",
+      "name": "Full-Stack Master",
+      "r": 18,
+      "c": 26,
+      "logo": null,
+      "cost": 8,
+      "parents": [
+        "backend",
+        "react",
+        "sql"
+      ],
+      "isStart": false,
+      "isSetPiece": true,
+      "category": "web"
+    },
+    {
       "id": "mobile",
       "name": "Mobile Dev",
-      "r": 13,
-      "c": 17,
+      "r": 10,
+      "c": 19,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
       "cost": 4,
       "parents": [
@@ -620,8 +709,8 @@
     {
       "id": "flutter",
       "name": "Flutter",
-      "r": 12,
-      "c": 17,
+      "r": 8,
+      "c": 19,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
       "cost": 5,
       "parents": [
@@ -634,8 +723,8 @@
     {
       "id": "reactnative",
       "name": "React Native",
-      "r": 13,
-      "c": 16,
+      "r": 7,
+      "c": 20,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
       "cost": 5,
       "parents": [
@@ -646,10 +735,25 @@
       "category": "mobile"
     },
     {
+      "id": "android",
+      "name": "Android Kotlin",
+      "r": 16,
+      "c": 20,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg",
+      "cost": 5,
+      "parents": [
+        "mobile",
+        "java"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "mobile"
+    },
+    {
       "id": "cloud",
       "name": "Cloud",
-      "r": 11,
-      "c": 11,
+      "r": 5,
+      "c": 18,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
       "cost": 5,
       "parents": [
@@ -662,8 +766,8 @@
     {
       "id": "docker",
       "name": "Docker",
-      "r": 11,
-      "c": 10,
+      "r": 3,
+      "c": 17,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
       "cost": 4,
       "parents": [
@@ -676,8 +780,8 @@
     {
       "id": "kubernetes",
       "name": "Kubernetes",
-      "r": 11,
-      "c": 9,
+      "r": 1,
+      "c": 16,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
       "cost": 7,
       "parents": [
@@ -690,8 +794,8 @@
     {
       "id": "ci_cd",
       "name": "CI/CD",
-      "r": 10,
-      "c": 11,
+      "r": 3,
+      "c": 18,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
       "cost": 5,
       "parents": [
@@ -705,8 +809,8 @@
     {
       "id": "aws",
       "name": "AWS",
-      "r": 12,
-      "c": 11,
+      "r": 3,
+      "c": 19,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
       "cost": 7,
       "parents": [
@@ -717,10 +821,109 @@
       "category": "cloud"
     },
     {
+      "id": "security",
+      "name": "Security",
+      "r": 1,
+      "c": 21,
+      "logo": null,
+      "cost": 6,
+      "parents": [
+        "cloud",
+        "backend"
+      ],
+      "isStart": false,
+      "isSetPiece": true,
+      "category": "cloud"
+    },
+    {
+      "id": "web3",
+      "name": "Web3",
+      "r": 4,
+      "c": 21,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/solidity/solidity-original.svg",
+      "cost": 6,
+      "parents": [
+        "javascript"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "cloud"
+    },
+    {
+      "id": "solidity",
+      "name": "Solidity",
+      "r": 3,
+      "c": 24,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/solidity/solidity-original.svg",
+      "cost": 6,
+      "parents": [
+        "web3"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "cloud"
+    },
+    {
+      "id": "testing",
+      "name": "Testing",
+      "r": 11,
+      "c": 15,
+      "logo": null,
+      "cost": 3,
+      "parents": [
+        "Start"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "testing"
+    },
+    {
+      "id": "unit_tests",
+      "name": "Unit Tests",
+      "r": 11,
+      "c": 16,
+      "logo": null,
+      "cost": 2,
+      "parents": [
+        "testing"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "testing"
+    },
+    {
+      "id": "integration",
+      "name": "Integration",
+      "r": 10,
+      "c": 16,
+      "logo": null,
+      "cost": 3,
+      "parents": [
+        "testing"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "testing"
+    },
+    {
+      "id": "e2e",
+      "name": "E2E Tests",
+      "r": 10,
+      "c": 15,
+      "logo": null,
+      "cost": 3,
+      "parents": [
+        "testing"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "testing"
+    },
+    {
       "id": "gamedev",
       "name": "Game Dev",
-      "r": 17,
-      "c": 22,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg",
       "cost": 4,
       "parents": [
@@ -733,8 +936,8 @@
     {
       "id": "engines",
       "name": "Engines",
-      "r": 19,
-      "c": 23,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg",
       "cost": 4,
       "parents": [
@@ -747,8 +950,8 @@
     {
       "id": "unity",
       "name": "Unity",
-      "r": 18,
-      "c": 24,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg",
       "cost": 5,
       "parents": [
@@ -761,8 +964,8 @@
     {
       "id": "unreal",
       "name": "Unreal",
-      "r": 20,
-      "c": 24,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg",
       "cost": 6,
       "parents": [
@@ -773,14 +976,29 @@
       "category": "gamedev"
     },
     {
+      "id": "godot",
+      "name": "Godot",
+      "r": null,
+      "c": null,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/godot/godot-original.svg",
+      "cost": 4,
+      "parents": [
+        "engines"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
       "id": "game_scripting",
       "name": "Scripting",
-      "r": 17,
-      "c": 24,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/lua/lua-original.svg",
       "cost": 4,
       "parents": [
-        "unity"
+        "unity",
+        "engines"
       ],
       "isStart": false,
       "isSetPiece": false,
@@ -789,12 +1007,13 @@
     {
       "id": "game_cpp",
       "name": "Engine C++",
-      "r": 21,
-      "c": 23,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
       "cost": 6,
       "parents": [
-        "unreal"
+        "unreal",
+        "engines"
       ],
       "isStart": false,
       "isSetPiece": false,
@@ -803,8 +1022,8 @@
     {
       "id": "game_design",
       "name": "Game Design",
-      "r": 16,
-      "c": 23,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 3,
       "parents": [
@@ -817,8 +1036,8 @@
     {
       "id": "level_design",
       "name": "Level Design",
-      "r": 15,
-      "c": 23,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 3,
       "parents": [
@@ -831,8 +1050,8 @@
     {
       "id": "uiux_game",
       "name": "UI/UX Game",
-      "r": 16,
-      "c": 24,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 2,
       "parents": [
@@ -845,8 +1064,8 @@
     {
       "id": "shaders",
       "name": "Shaders",
-      "r": 20,
-      "c": 25,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 6,
       "parents": [
@@ -859,8 +1078,8 @@
     {
       "id": "rendering",
       "name": "Rendering",
-      "r": 19,
-      "c": 25,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 6,
       "parents": [
@@ -873,8 +1092,8 @@
     {
       "id": "vfx",
       "name": "VFX",
-      "r": 20,
-      "c": 26,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 4,
       "parents": [
@@ -887,8 +1106,8 @@
     {
       "id": "game_ai",
       "name": "Game AI",
-      "r": 17,
-      "c": 25,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 5,
       "parents": [
@@ -901,8 +1120,8 @@
     {
       "id": "navmesh",
       "name": "Pathfinding",
-      "r": 15,
-      "c": 25,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 4,
       "parents": [
@@ -915,8 +1134,8 @@
     {
       "id": "gameplay_ai",
       "name": "Behavior Trees",
-      "r": 15,
-      "c": 26,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 4,
       "parents": [
@@ -929,8 +1148,8 @@
     {
       "id": "animation",
       "name": "Animation",
-      "r": 18,
-      "c": 25,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 4,
       "parents": [
@@ -943,8 +1162,8 @@
     {
       "id": "rigging",
       "name": "Rigging",
-      "r": 18,
-      "c": 26,
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 4,
       "parents": [
@@ -955,14 +1174,126 @@
       "category": "gamedev"
     },
     {
+      "id": "audio_design",
+      "name": "Game Audio",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 3,
+      "parents": [
+        "godot"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
+      "id": "multiplayer",
+      "name": "Multiplayer",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 6,
+      "parents": [
+        "gamedev"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
+      "id": "rollback_netcode",
+      "name": "Rollback Net",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 6,
+      "parents": [
+        "multiplayer"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
+      "id": "server_arch",
+      "name": "Server Arch",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 6,
+      "parents": [
+        "multiplayer"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
+      "id": "perf_opt",
+      "name": "Perf Opt",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 5,
+      "parents": [
+        "unreal"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
+      "id": "profiling",
+      "name": "Profiling",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 4,
+      "parents": [
+        "perf_opt"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
+      "id": "monetization",
+      "name": "Monetization",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 4,
+      "parents": [
+        "multiplayer"
+      ],
+      "isStart": false,
+      "isSetPiece": false,
+      "category": "gamedev"
+    },
+    {
+      "id": "game_master",
+      "name": "Game Architect",
+      "r": null,
+      "c": null,
+      "logo": null,
+      "cost": 10,
+      "parents": [
+        "monetization"
+      ],
+      "isStart": false,
+      "isSetPiece": true,
+      "category": "gamedev"
+    },
+    {
       "id": "tooling",
       "name": "Dev Tooling",
-      "r": 11,
-      "c": 14,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
       "cost": 2,
       "parents": [
-        "Start"
+        "python"
       ],
       "isStart": false,
       "isSetPiece": false,
@@ -971,8 +1302,8 @@
     {
       "id": "git",
       "name": "Git",
-      "r": 10,
-      "c": 15,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
       "cost": 1,
       "parents": [
@@ -985,8 +1316,8 @@
     {
       "id": "ci",
       "name": "GitHub Actions",
-      "r": 10,
-      "c": 14,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
       "cost": 2,
       "parents": [
@@ -999,8 +1330,8 @@
     {
       "id": "editors",
       "name": "Editors/IDEs",
-      "r": 11,
-      "c": 15,
+      "r": null,
+      "c": null,
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
       "cost": 1,
       "parents": [
@@ -1011,81 +1342,9 @@
       "category": "tooling"
     },
     {
-      "id": "silent_4",
+      "id": "silent_1",
       "name": "Path",
       "r": 15,
-      "c": 14,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_6",
-      "name": "Path",
-      "r": 15,
-      "c": 13,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_7",
-      "name": "Path",
-      "r": 15,
-      "c": 11,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_8",
-      "name": "Path",
-      "r": 15,
-      "c": 16,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_9",
-      "name": "Path",
-      "r": 16,
-      "c": 26,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_10",
-      "name": "Path",
-      "r": 14,
-      "c": 20,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_11",
-      "name": "Path",
-      "r": 12,
       "c": 12,
       "logo": null,
       "cost": 0,
@@ -1095,10 +1354,10 @@
       "category": "spacer"
     },
     {
-      "id": "silent_12",
-      "name": "Path",
-      "r": 12,
-      "c": 19,
+      "id": "silent_2",
+      "name": "Algo",
+      "r": null,
+      "c": null,
       "logo": null,
       "cost": 0,
       "parents": [],
@@ -1107,93 +1366,9 @@
       "category": "spacer"
     },
     {
-      "id": "silent_13",
+      "id": "silent_3",
       "name": "Path",
-      "r": 14,
-      "c": 18,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_14",
-      "name": "Path",
-      "r": 13,
-      "c": 13,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_15",
-      "name": "Path",
-      "r": 20,
-      "c": 21,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_16",
-      "name": "Path",
-      "r": 17,
-      "c": 21,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_18",
-      "name": "Path",
-      "r": 16,
-      "c": 19,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_19",
-      "name": "Path",
-      "r": 17,
-      "c": 19,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_20",
-      "name": "Path",
-      "r": 12,
-      "c": 15,
-      "logo": null,
-      "cost": 0,
-      "parents": [],
-      "isStart": false,
-      "isSetPiece": false,
-      "category": "spacer"
-    },
-    {
-      "id": "silent_21",
-      "name": "Path",
-      "r": 13,
+      "r": 15,
       "c": 14,
       "logo": null,
       "cost": 0,
@@ -1203,10 +1378,10 @@
       "category": "spacer"
     },
     {
-      "id": "silent_23",
+      "id": "silent_4",
       "name": "Path",
       "r": 14,
-      "c": 15,
+      "c": 13,
       "logo": null,
       "cost": 0,
       "parents": [],
@@ -1215,9 +1390,9 @@
       "category": "spacer"
     },
     {
-      "id": "silent_24",
+      "id": "silent_5",
       "name": "Path",
-      "r": 12,
+      "r": 18,
       "c": 13,
       "logo": null,
       "cost": 0,

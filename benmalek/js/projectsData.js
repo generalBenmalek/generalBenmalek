@@ -1,5 +1,27 @@
 window.projectsDataFallback = [
   {
+    "id": "0_cv",
+    "title": "Curriculum Vitae",
+    "subtitle": "Professional Resume",
+    "technologies": [
+      "AI & Machine Learning",
+      "Software Engineering",
+      "Data Science",
+      "Computer Science"
+    ],
+    "description": "My complete professional curriculum vitae detailing my technical skills, professional work experience, academic background, and engineering achievements.",
+    "achievements": [
+      "Showcases academic background, coursework, and technical skills in Computer Science and Artificial Intelligence.",
+      "Lists professional software engineering and AI work experiences.",
+      "Details engineering projects, certifications, and core competencies.",
+      "Includes contact details, active professional links, and languages."
+    ],
+    "path_report": "benmalek/reports/cv.pdf",
+    "path_video": null,
+    "images": [],
+    "youtube_videos": []
+  },
+  {
     "id": "1_esia_impact_chatbot",
     "title": "ENSIA Impact Chatbot",
     "subtitle": "AI & RAG System",

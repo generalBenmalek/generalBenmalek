@@ -568,31 +568,64 @@ body.exploring {
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    z-index: 10;
 }
 
-.hex-mode-btn {
-    padding: 10px 25px;
-    background: transparent;
-    border: 2px solid #8b7355;
+.hex-mode-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
     color: #b8956a;
     font-family: 'Cinzel', serif;
     font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
     letter-spacing: 1px;
+    cursor: pointer;
+    user-select: none;
 }
 
-.hex-mode-btn.active {
-    background: #d4af37;
+.hex-mode-label {
+    min-width: 84px;
+    text-align: center;
+}
+
+.hex-mode-switch input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hex-mode-slider {
+    position: relative;
+    width: 58px;
+    height: 30px;
+    border: 2px solid #8b7355;
+    background: transparent;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 0 1px rgba(139, 115, 85, 0.2);
+}
+
+.hex-mode-slider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    transform: translateY(-50%);
+    background: #b8956a;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.hex-mode-switch input:checked + .hex-mode-slider {
     border-color: #d4af37;
-    color: #0a0a0a;
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
-.hex-mode-btn:hover:not(.active) {
-    border-color: #d4af37;
-    color: #f4e4b0;
+.hex-mode-switch input:checked + .hex-mode-slider::before {
+    left: 31px;
+    background: #f4e4b0;
 }
 
 .hex-sp-display {
@@ -614,211 +647,128 @@ body.exploring {
     overflow: hidden;
     cursor: grab;
     user-select: none;
-    background: #0a0a0a;
 }
 
 .hex-container:active {
     cursor: grabbing;
 }
 
-.hex-canvas {
-    position: absolute;
+#hexCanvas {
     width: 100%;
     height: 100%;
-    transform-origin: 0 0;
+    display: block;
 }
 
-/* Force pointer-events on canvas child elements */
-.hex-canvas * {
-    pointer-events: auto;
+svg#hexCanvas polygon.hex-node {
+    stroke-width: 3;
+    transition: all 0.3s ease;
+    cursor: default;
 }
 
-/* Individual Hexagon */
-.hex-cell {
-    position: absolute;
-    width: 104px;  /* R = 60px; W = sqrt(3)*R = 104px */
-    height: 120px; /* H = 2*R = 120px */
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+/* Locked state styling */
+svg#hexCanvas polygon.hex-node.locked {
+    fill: #1a1a1a;
+    stroke: #444444;
+    opacity: 0.5;
+}
+
+svg#hexCanvas text.hex-icon {
+    font-family: Arial, sans-serif;
+    transition: opacity 0.3s;
+}
+
+svg#hexCanvas text.hex-label {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    fill: #f4e4b0;
+    transition: opacity 0.3s;
+}
+
+svg#hexCanvas .locked text.hex-icon,
+svg#hexCanvas .locked text.hex-label {
+    opacity: 0.4;
+    fill: #8b7355;
+}
+
+/* Available state styling */
+svg#hexCanvas polygon.hex-node.available {
+    fill: #132435;
+    stroke: #8b7355;
+    opacity: 0.9;
     cursor: pointer;
-    transition: transform 0.2s ease, filter 0.2s ease;
-    z-index: 10;
+    animation: availablePulse 2s infinite alternate;
 }
 
-.hex-cell:hover {
-    transform: translate(-50%, -50%) scale(1.1) !important;
-    z-index: 20;
+svg#hexCanvas polygon.hex-node.available:hover {
+    fill: #1d3b5c;
+    stroke: #d4af37;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
 }
 
-.hex-cell-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    background: #8b7355;
-    transition: background 0.3s ease;
+@keyframes availablePulse {
+    0% { stroke: #8b7355; filter: drop-shadow(0 0 2px rgba(139, 115, 85, 0.4)); }
+    100% { stroke: #d4af37; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8)); }
 }
 
-/* Category Grid Colors (snapped into colored sectors like the reference image) */
-.hex-cell-border.cat-languages { background: linear-gradient(135deg, #60A5FA, #93C5FD, #60A5FA); }
-.hex-cell-border.cat-ds_algo { background: linear-gradient(135deg, #1E3A8A, #3B82F6, #1E3A8A); }
-.hex-cell-border.cat-databases { background: linear-gradient(135deg, #7C3AED, #A78BFA, #7C3AED); }
-.hex-cell-border.cat-ml { background: linear-gradient(135deg, #059669, #34D399, #059669); }
-.hex-cell-border.cat-web { background: linear-gradient(135deg, #F59E0B, #FCD34D, #F59E0B); }
-.hex-cell-border.cat-mobile { background: linear-gradient(135deg, #06B6D4, #67E8F9, #06B6D4); }
-.hex-cell-border.cat-cloud { background: linear-gradient(135deg, #2563EB, #60A5FA, #2563EB); }
-.hex-cell-border.cat-testing { background: linear-gradient(135deg, #4B5563, #9CA3AF, #4B5563); }
-.hex-cell-border.cat-gamedev { background: linear-gradient(135deg, #DC2626, #F87171, #DC2626); }
-.hex-cell-border.cat-tooling { background: linear-gradient(135deg, #6B7280, #D1D5DB, #6B7280); }
+/* Unlocked state styling */
+svg#hexCanvas polygon.hex-node.unlocked {
+    fill: #0d0d0d;
+    stroke: #d4af37;
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+}
 
-/* Set Piece (Mastery Node) Purple Border Override */
-.hex-cell.set-piece {
+svg#hexCanvas polygon.hex-node.unlocked:hover {
+    fill: #1a1a1a;
+    stroke: #f4e4b0;
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.8));
+}
+
+/* Category-specific border strokes for unlocked nodes in View Mode */
+svg#hexCanvas polygon.hex-node.unlocked.cat-languages { stroke: #60A5FA; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-ds_algo { stroke: #3B82F6; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-databases { stroke: #7C3AED; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-ml { stroke: #059669; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-web { stroke: #F59E0B; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-mobile { stroke: #06B6D4; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-cloud { stroke: #2563EB; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-testing { stroke: #4B5563; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-gamedev { stroke: #DC2626; }
+svg#hexCanvas polygon.hex-node.unlocked.cat-tooling { stroke: #6B7280; }
+
+svg#hexCanvas .unlocked text.hex-icon {
+    opacity: 1;
+}
+
+svg#hexCanvas .unlocked text.hex-label {
+    fill: #f4e4b0;
+    opacity: 1;
+}
+
+/* Set Piece (Mastery Node) Override */
+svg#hexCanvas polygon.hex-node.set-piece {
+    stroke-width: 4;
+}
+
+svg#hexCanvas polygon.hex-node.set-piece.unlocked {
+    stroke: #a855f7;
     filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.8));
 }
-.hex-cell.set-piece .hex-cell-border {
-    background: linear-gradient(135deg, #A855F7, #C084FC, #A855F7) !important;
-}
-.hex-cell.set-piece .hex-inner {
-    top: 6px;
-    left: 6px;
-    right: 6px;
-    bottom: 6px;
+
+svg#hexCanvas polygon.hex-node.set-piece.available {
+    stroke: #8b5cf6;
 }
 
-/* Locked Skill Styling (Game Mode) */
-.hex-cell.locked .hex-cell-border {
-    background: #333333 !important;
+/* Cost badge styles */
+svg#hexCanvas .cost-badge .badge-bg {
+    fill: #d4af37;
+    stroke: #0a0a0a;
+    stroke-width: 1;
 }
-.hex-cell.locked .hex-inner {
-    opacity: 0.6;
-}
-
-.hex-inner {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    right: 3px;
-    bottom: 3px;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    background: linear-gradient(145deg, #121212, #080808);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 5px;
-    text-align: center;
-    transition: background 0.3s ease;
-}
-
-.hex-cell:hover .hex-inner {
-    background: linear-gradient(145deg, #222222, #111111);
-}
-
-.hex-name {
+svg#hexCanvas .cost-badge .badge-text {
+    fill: #0a0a0a;
     font-family: 'Cinzel', serif;
-    font-size: 0.65rem;
     font-weight: bold;
-    color: #f4e4b0;
-    margin-bottom: 2px;
-    line-height: 1.1;
-    max-width: 90px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-
-.hex-level-pips {
-    display: flex;
-    gap: 2px;
-    margin-bottom: 2px;
-}
-
-.hex-pip {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    border: 1px solid #8b7355;
-    background: transparent;
-    transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.hex-pip.filled {
-    background: #d4af37;
-    border-color: #d4af37;
-    box-shadow: 0 0 4px rgba(212, 175, 55, 0.5);
-}
-
-.hex-percentage {
-    font-size: 0.6rem;
-    color: #b8956a;
-    font-weight: bold;
-}
-
-.hex-percentage-bar {
-    width: 50px;
-    height: 3px;
-    background: #0a0a0a;
-    border: 1px solid #8b7355;
-    margin-top: 2px;
-    overflow: hidden;
-}
-
-.hex-percentage-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #d4af37, #f4e4b0);
-    transition: width 0.8s ease-out;
-}
-
-/* Game mode upgrade button on hexagon */
-.hex-upgrade-btn {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 1px 6px;
-    background: #d4af37;
-    color: #0a0a0a;
-    border: none;
-    font-family: 'Cinzel', serif;
-    font-size: 0.55rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
-    z-index: 15;
-}
-
-.hex-upgrade-btn:hover {
-    background: #f4e4b0;
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
-}
-
-.hex-upgrade-btn:disabled {
-    background: #3a3a3a;
-    color: #666;
-    cursor: not-allowed;
-}
-
-/* Legendary/Epic glow animations */
-.hex-cell.legendary-glow {
-    animation: legendaryPulse 2s ease-in-out infinite;
-}
-
-@keyframes legendaryPulse {
-    0%, 100% { filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.4)); }
-    50% { filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.8)); }
-}
-
-.hex-cell.epic-glow {
-    animation: epicPulse 3s ease-in-out infinite;
-}
-
-@keyframes epicPulse {
-    0%, 100% { filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.3)); }
-    50% { filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6)); }
 }
 
 
@@ -826,8 +776,19 @@ body.exploring {
 /* Overlay UI panels */
 .hex-legend {
     position: absolute;
-    top: 100px;
+    top: 20px;
     left: 30px;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.85);
+    border: 2px solid #8b7355;
+    padding: 12px 18px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.hex-legend-right {
+    position: absolute;
+    top: 20px;
+    right: 30px;
     z-index: 100;
     background: rgba(10, 10, 10, 0.85);
     border: 2px solid #8b7355;
@@ -1741,25 +1702,31 @@ body.light-mode .hex-mode-bar {
     box-shadow: 0 8px 30px rgba(92, 79, 51, 0.08);
 }
 
-body.light-mode .hex-mode-btn {
-    border-color: #c5a059;
-    color: #5c4f33;
-}
-
-body.light-mode .hex-mode-btn.active {
-    background: #c5a059;
-    border-color: #c5a059;
-    color: #faf8f2;
-}
-
-body.light-mode .hex-mode-btn:hover:not(.active) {
-    border-color: #c5a059;
-    color: #3c3320;
-}
-
 body.light-mode .hex-sp-display {
     color: #3c3320;
     border-left-color: #c5a059;
+}
+
+body.light-mode .hex-mode-switch {
+    color: #5c4f33;
+}
+
+body.light-mode .hex-mode-slider {
+    background: rgba(245, 245, 220, 0.85);
+    border-color: #d6c2a3;
+}
+
+body.light-mode .hex-mode-slider::before {
+    background: #8b7355;
+}
+
+body.light-mode .hex-mode-switch input:checked + .hex-mode-slider {
+    border-color: #c5a059;
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+}
+
+body.light-mode .hex-mode-switch input:checked + .hex-mode-slider::before {
+    background: #5c4f33;
 }
 
 body.light-mode .hex-legend {
@@ -1791,36 +1758,63 @@ body.light-mode .hex-instructions {
     border-color: rgba(197, 160, 89, 0.3);
 }
 
-body.light-mode .hex-inner {
-    background: #ffffff;
+body.light-mode svg#hexCanvas polygon.hex-node.locked {
+    fill: #f5f2eb;
+    stroke: #d0c9bc;
+    opacity: 0.6;
 }
 
-body.light-mode .hex-cell:hover .hex-inner {
-    background: linear-gradient(145deg, #fffcf0, #faf5e6);
+body.light-mode svg#hexCanvas .locked text.hex-icon,
+body.light-mode svg#hexCanvas .locked text.hex-label {
+    fill: #aaaaaa;
+    opacity: 0.5;
 }
 
-body.light-mode .hex-name {
-    color: #3c3320;
+body.light-mode svg#hexCanvas polygon.hex-node.available {
+    fill: #e8f0fe;
+    stroke: #c5a059;
 }
 
-body.light-mode .hex-pip {
-    border-color: #c5a059;
+body.light-mode svg#hexCanvas polygon.hex-node.available:hover {
+    fill: #d2e3fc;
+    stroke: #c5a059;
+    filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.6));
 }
 
-body.light-mode .hex-pip.filled {
-    background: #c5a059;
-    border-color: #c5a059;
-    box-shadow: 0 0 4px rgba(197, 160, 89, 0.5);
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked {
+    fill: #ffffff;
+    stroke: #c5a059;
 }
 
-body.light-mode .hex-upgrade-btn {
-    background: #c5a059;
-    color: #faf8f2;
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked:hover {
+    fill: #fffdf5;
+    stroke: #3c3320;
+    filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.8));
 }
 
-body.light-mode .hex-upgrade-btn:disabled {
-    background: #e0ddd4;
-    color: #aaa;
+/* Light mode category strokes */
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-languages { stroke: #3b82f6; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-ds_algo { stroke: #1d4ed8; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-databases { stroke: #6d28d9; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-ml { stroke: #047857; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-web { stroke: #d97706; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-mobile { stroke: #0891b2; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-cloud { stroke: #1d4ed8; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-testing { stroke: #4b5563; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-gamedev { stroke: #b91c1c; }
+body.light-mode svg#hexCanvas polygon.hex-node.unlocked.cat-tooling { stroke: #4b5563; }
+
+body.light-mode svg#hexCanvas text.hex-label {
+    fill: #3c3320;
+}
+
+body.light-mode svg#hexCanvas .cost-badge .badge-bg {
+    fill: #c5a059;
+    stroke: #ffffff;
+}
+
+body.light-mode svg#hexCanvas .cost-badge .badge-text {
+    fill: #ffffff;
 }
 
 /* Projects Light Mode */
@@ -1963,4 +1957,83 @@ body.light-mode .project-placeholder {
     .hex-mode-bar {
         flex-wrap: wrap;
     }
+}
+
+/* Pull-Cord Ceiling Lamp Theme Switcher */
+.theme-lamp-container {
+    position: fixed;
+    top: 0;
+    right: 80px;
+    width: 60px;
+    height: 180px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+}
+
+.lamp-wire {
+    width: 2px;
+    height: 30px;
+    background-color: #444;
+}
+
+.lamp-body {
+    position: relative;
+    width: 32px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.lamp-shade {
+    width: 32px;
+    height: 16px;
+    background: linear-gradient(to bottom, #d4af37, #8b7355);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+}
+
+.lamp-bulb {
+    position: absolute;
+    top: 12px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #222;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .lamp-bulb {
+    background-color: #fffbdf;
+    box-shadow: 0 0 10px #fff, 0 0 20px #d4af37;
+}
+
+.lamp-rope-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: top center;
+}
+
+.lamp-rope {
+    width: 1px;
+    height: 70px;
+    background-color: #777;
+    border-left: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.lamp-handle {
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(135deg, #d4af37, #aa8525);
+    border-radius: 4px 4px 5px 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
 }

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Tree Hexagon Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --panel-bg: #141414;
+            --gold: #d4af37;
+            --gold-low: rgba(212, 175, 55, 0.2);
+            --gold-high: #f4e4b0;
+            --border: #3a3a3a;
+            --text: #b8956a;
+            --text-light: #faf8f2;
+            --grey: #555555;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--panel-bg);
+            border-bottom: 2px solid var(--gold);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            text-shadow: 0 0 10px var(--gold-low);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            background: linear-gradient(145deg, #222, #11);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 10px var(--gold-low);
+        }
+
+        button.danger {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        button.danger:hover {
+            background: #ff6b6b;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Workspace */
+        .workspace {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sidebar: Unplaced Nodes */
+        .sidebar-left {
+            width: 320px;
+            background-color: var(--panel-bg);
+            border-right: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 8px 12px;
+            background: #080808;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            font-family: inherit;
+        }
+
+        .search-box:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .node-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .node-card {
+            background: #1a1a1a;
+            border: 1px solid var(--border);
+            padding: 10px;
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .node-card:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+        }
+
+        .node-card-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .node-card-cat {
+            font-size: 0.7rem;
+            color: var(--text);
+            text-transform: uppercase;
+        }
+
+        /* Canvas */
+        .canvas-container {
+            flex: 1;
+            position: relative;
+            background: radial-gradient(#151515, #080808);
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        .canvas-container:active {
+            cursor: grabbing;
+        }
+
+        #editorCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Right Panel: Node Properties */
+        .sidebar-right {
+            width: 320px;
+            background-color: var(--panel-bg);
+            border-left: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 5;
+        }
+
+        .sidebar-right.active {
+            transform: translateX(0);
+            position: relative;
+        }
+
+        .right-section {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .right-section h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        label {
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            background: #080808;
+            border: 1px solid var(--border);
+            color: #fff;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .dependency-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            background: #080808;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .dependency-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            padding: 4px;
+        }
+
+        /* SVG styles */
+        .grid-cell {
+            fill: rgba(255,255,255,0.01);
+            stroke: rgba(212, 175, 55, 0.08);
+            stroke-width: 1;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .grid-cell:hover {
+            fill: rgba(212, 175, 55, 0.05);
+            stroke: var(--gold);
+        }
+
+        .placed-hex {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .placed-hex:hover {
+            filter: brightness(1.2);
+        }
+
+        .placed-hex.selected polygon {
+            stroke: var(--gold-high) !important;
+            stroke-width: 3 !important;
+            filter: drop-shadow(0 0 8px var(--gold));
+        }
+
+        .placed-hex.violation polygon {
+            stroke: #ff4d4d !important;
+            stroke-width: 3 !important;
+            animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+            0%, 100% { filter: drop-shadow(0 0 2px rgba(255,77,77,0.5)); }
+            50% { filter: drop-shadow(0 0 10px rgba(255,77,77,0.9)); }
+        }
+
+        .link-line {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            stroke-dasharray: 4,4;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .link-line.violation {
+            stroke: #ff4d4d;
+            stroke-width: 2;
+        }
+
+        /* Export Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background: var(--panel-bg);
+            border: 2px solid var(--gold);
+            width: 80%;
+            max-width: 800px;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-textarea {
+            width: 100%;
+            flex: 1;
+            background: #080808;
+            border: 1px solid var(--border);
+            color: #fff;
+            font-family: monospace;
+            padding: 10px;
+            resize: none;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Zoom controls */
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 2;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--panel-bg);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .zoom-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* Color schemes for category polygons */
+        .cat-languages { fill: #2a1a08; stroke: #d4af37; }
+        .cat-web { fill: #081a2a; stroke: #3b82f6; }
+        .cat-mobile { fill: #082a22; stroke: #10b981; }
+        .cat-databases { fill: #20082a; stroke: #a855f7; }
+        .cat-ml { fill: #2a0808; stroke: #f59e0b; }
+        .cat-cloud { fill: #1c1c1c; stroke: #9ca3af; }
+        .cat-ds_algo { fill: #2a2a08; stroke: #eab308; }
+        .cat-testing { fill: #0d2518; stroke: #84cc16; }
+        .cat-gamedev { fill: #250d0d; stroke: #ef4444; }
+        .cat-tooling { fill: #0d2525; stroke: #06b6d4; }
+        .cat-spacer { fill: #1f1f1f; stroke: #7f7f7f; }
+
+        .cat-languages text { fill: #f4e4b0; }
+        .cat-web text { fill: #93c5fd; }
+        .cat-mobile text { fill: #6ee7b7; }
+        .cat-databases text { fill: #c084fc; }
+        .cat-ml text { fill: #fcd34d; }
+        .cat-cloud text { fill: #e5e7eb; }
+        .cat-ds_algo text { fill: #fef08a; }
+        .cat-testing text { fill: #bef264; }
+        .cat-gamedev text { fill: #fca5a5; }
+        .cat-tooling text { fill: #67e8f9; }
+        .cat-spacer text { fill: #cccccc; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Skill Hexagon Layout Editor</h1>
+        <div class="header-actions">
+            <button onclick="addSilentNode()">+ Add Silent Node</button>
+            <button onclick="resetLayout()" class="danger">Reset Layout</button>
+            <button onclick="showExport('skills')">Export skills.json</button>
+            <button onclick="showExport('deps')">Export dependencies.json</button>
+            <button onclick="showExport('fallback')">Export skillsData.js</button>
+        </div>
+    </header>
+
+    <div class="workspace">
+        <!-- Left Panel: Unplaced Skills -->
+        <div class="sidebar-left">
+            <div class="sidebar-header">
+                <input type="text" id="nodeSearch" class="search-box" placeholder="Search unplaced skills..." oninput="filterUnplaced()">
+                <div style="font-size:0.75rem; color:var(--text)">Drag nodes from here onto the grid.</div>
+            </div>
+            <div class="node-list" id="unplacedList">
+                <!-- Cards injected here -->
+            </div>
+        </div>
+
+        <!-- Canvas -->
+        <div class="canvas-container" id="canvasContainer">
+            <svg id="editorCanvas">
+                <g id="gridGroup"></g>
+                <g id="linksGroup"></g>
+                <g id="nodesGroup"></g>
+            </svg>
+
+            <!-- Zoom Controls -->
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoom(0.85)">+</button>
+                <button class="zoom-btn" onclick="zoom(1.15)">-</button>
+                <button class="zoom-btn" onclick="resetZoom()">⟲</button>
+            </div>
+        </div>
+
+        <!-- Right Panel: Node Properties Inspector -->
+        <div class="sidebar-right" id="inspectorPanel">
+            <div class="right-section">
+                <h3>Node Properties</h3>
+                <label>Node ID</label>
+                <input type="text" id="inspectId" readonly style="opacity:0.6">
+            </div>
+
+            <div class="right-section">
+                <label>Label Name</label>
+                <input type="text" id="inspectName" oninput="updateSelectedNodeProp('name', this.value)">
+            </div>
+
+            <div class="right-section">
+                <label>Skill Point Cost</label>
+                <input type="number" id="inspectCost" min="0" oninput="updateSelectedNodeProp('cost', parseInt(this.value)||0)">
+            </div>
+
+            <div class="right-section">
+                <label>Category</label>
+                <select id="inspectCategory" onchange="updateSelectedNodeProp('category', this.value)">
+                    <option value="languages">Languages</option>
+                    <option value="web">Web / Frontend / Backend</option>
+                    <option value="mobile">Mobile Dev</option>
+                    <option value="databases">Databases</option>
+                    <option value="ml">Machine Learning / ML</option>
+                    <option value="cloud">Cloud / DevOps</option>
+                    <option value="ds_algo">DSA</option>
+                    <option value="testing">QA Testing</option>
+                    <option value="gamedev">Game Dev</option>
+                    <option value="tooling">Dev Tooling</option>
+                    <option value="spacer">Spacer (Grey Node)</option>
+                </select>
+            </div>
+
+            <div class="right-section">
+                <label>Icon / Logo URL (Optional)</label>
+                <input type="text" id="inspectLogo" placeholder="e.g. devicons CDN path" oninput="updateSelectedNodeProp('logo', this.value)">
+            </div>
+
+            <div class="right-section">
+                <label>Dependencies (Select Parents)</label>
+                <div class="dependency-list" id="dependencyListContainer">
+                    <!-- Checkboxes injected here -->
+                </div>
+            </div>
+
+            <div class="right-section" style="margin-top:auto; gap:10px;">
+                <button class="danger" style="width:100%" onclick="removeSelectedNode()">Remove from Grid</button>
+                <button style="width:100%" onclick="deselectNode()">Close Inspector</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal-overlay" id="exportModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Export File</h2>
+                <button onclick="closeModal()">Close</button>
+            </div>
+            <div class="modal-body">
+                <div style="font-size:0.85rem; color:var(--text)">Copy this output and overwrite the file in your workspace, or download it.</div>
+                <textarea class="modal-textarea" id="modalTextarea" readonly></textarea>
+            </div>
+            <div class="modal-actions">
+                <button onclick="copyModalContent()">Copy to Clipboard</button>
+                <button id="downloadBtn">Download File</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Grid setup
+        const HEX_SIZE = 45;
+        const HEX_GAP = 6;
+        const GRID_ROWS = 30;
+        const GRID_COLS = 30;
+
+        const w = Math.sqrt(3) * HEX_SIZE;
+        const horizontalSpacing = w + HEX_GAP;
+        const verticalSpacing = 1.5 * HEX_SIZE + HEX_GAP;
+
+        let allNodes = []; // All defined nodes (placed + unplaced)
+        let selectedNodeId = null;
+        let silentCounter = 1;
+
+        // Viewport Transform State
+        let transform = { x: 0, y: 0, scale: 0.6 };
+        let isDragging = false;
+        let startX, startY;
+
+        // Drag & Drop State
+        let draggedNodeId = null;
+
+        // Initialize editor
+        document.addEventListener("DOMContentLoaded", async () => {
+            await loadOriginalData();
+            setupPanZoomHandlers();
+            renderGrid();
+            renderNodes();
+            renderUnplacedList();
+        });
+
+        async function loadOriginalData() {
+            try {
+                const res = await fetch('skills.json');
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+                allNodes = data.nodes.map(n => ({
+                    id: n.id,
+                    name: n.name,
+                    r: n.r !== undefined ? n.r : null,
+                    c: n.c !== undefined ? n.c : null,
+                    logo: n.logo || null,
+                    cost: n.cost || 0,
+                    parents: n.parents || [],
+                    isStart: !!n.isStart,
+                    isSetPiece: !!n.isSetPiece,
+                    category: n.category || 'languages'
+                }));
+            } catch (err) {
+                console.warn("Could not fetch skills.json directly, initializing fallback mock data.");
+                if (window.skillsDataFallback) {
+                    allNodes = window.skillsDataFallback.nodes.map(n => ({ ...n }));
+                } else {
+                    // Seed a simple Core node if nothing exists
+                    allNodes = [{
+                        id: "Start", name: "Core", r: 15, c: 15, logo: null, cost: 0, parents: [], isStart: true, isSetPiece: true, category: "languages"
+                    }];
+                }
+            }
+
+            // Sync silent nodes counter
+            allNodes.forEach(n => {
+                if (n.id.startsWith('silent_')) {
+                    const num = parseInt(n.id.split('_')[1]);
+                    if (num >= silentCounter) silentCounter = num + 1;
+                }
+            });
+
+            // Center initially
+            centerOnNode("Start");
+        }
+
+        function centerOnNode(id) {
+            const node = allNodes.find(n => n.id === id);
+            if (!node || node.r === null) return;
+            const container = document.getElementById("canvasContainer");
+            const rect = container.getBoundingClientRect();
+            
+            const px = getPixelCoords(node.r, node.c);
+            transform.x = rect.width / 2 - px.x * transform.scale;
+            transform.y = rect.height / 2 - px.y * transform.scale;
+            updateTransform();
+        }
+
+        function getPixelCoords(r, c) {
+            const x = c * horizontalSpacing + (r % 2) * (horizontalSpacing / 2);
+            const y = r * verticalSpacing;
+            return { x, y };
+        }
+
+        function updateTransform() {
+            const gridGroup = document.getElementById("gridGroup");
+            const linksGroup = document.getElementById("linksGroup");
+            const nodesGroup = document.getElementById("nodesGroup");
+            
+            const value = `translate(${transform.x}, ${transform.y}) scale(${transform.scale})`;
+            gridGroup.setAttribute("transform", value);
+            linksGroup.setAttribute("transform", value);
+            nodesGroup.setAttribute("transform", value);
+        }
+
+        function setupPanZoomHandlers() {
+            const container = document.getElementById("canvasContainer");
+
+            container.addEventListener("mousedown", (e) => {
+                if (e.target.closest('.placed-hex') || e.target.closest('.grid-cell')) return;
+                isDragging = true;
+                startX = e.clientX - transform.x;
+                startY = e.clientY - transform.y;
+            });
+
+            window.addEventListener("mousemove", (e) => {
+                if (!isDragging) return;
+                transform.x = e.clientX - startX;
+                transform.y = e.clientY - startY;
+                updateTransform();
+            });
+
+            window.addEventListener("mouseup", () => {
+                isDragging = false;
+            });
+
+            container.addEventListener("wheel", (e) => {
+                e.preventDefault();
+                const factor = e.deltaY > 0 ? 0.9 : 1.1;
+                
+                // Zoom relative to pointer coords
+                const rect = container.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                
+                const svgX = (mouseX - transform.x) / transform.scale;
+                const svgY = (mouseY - transform.y) / transform.scale;
+                
+                transform.scale = Math.max(0.15, Math.min(3, transform.scale * factor));
+                transform.x = mouseX - svgX * transform.scale;
+                transform.y = mouseY - svgY * transform.scale;
+                
+                updateTransform();
+            }, { passive: false });
+        }
+
+        // Render Background Grid cell elements
+        function renderGrid() {
+            const gridGroup = document.getElementById("gridGroup");
+            gridGroup.innerHTML = '';
+
+            for (let r = 0; r < GRID_ROWS; r++) {
+                for (let c = 0; c < GRID_COLS; c++) {
+                    const pos = getPixelCoords(r, c);
+                    const cell = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+                    
+                    let pts = [];
+                    for (let i = 0; i < 6; i++) {
+                        const angle = Math.PI / 180 * (60 * i - 30);
+                        pts.push(`${pos.x + HEX_SIZE * Math.cos(angle)},${pos.y + HEX_SIZE * Math.sin(angle)}`);
+                    }
+                    
+                    cell.setAttribute("points", pts.join(" "));
+                    cell.setAttribute("class", "grid-cell");
+                    cell.setAttribute("data-r", r);
+                    cell.setAttribute("data-c", c);
+                    
+                    cell.addEventListener("dragover", (e) => e.preventDefault());
+                    cell.addEventListener("drop", (e) => handleDropOnCell(r, c));
+                    cell.addEventListener("click", () => handleCellClick(r, c));
+
+                    gridGroup.appendChild(cell);
+                }
+            }
+        }
+
+        // Render placed node hexagons and lines
+        function renderNodes() {
+            const nodesGroup = document.getElementById("nodesGroup");
+            const linksGroup = document.getElementById("linksGroup");
+            nodesGroup.innerHTML = '';
+            linksGroup.innerHTML = '';
+
+            const placedNodes = allNodes.filter(n => n.r !== null && n.c !== null);
+
+            // Draw link lines first
+            placedNodes.forEach(node => {
+                node.parents.forEach(parentName => {
+                    const parent = allNodes.find(p => p.id === parentName);
+                    if (parent && parent.r !== null && parent.c !== null) {
+                        const start = getPixelCoords(parent.r, parent.c);
+                        const end = getPixelCoords(node.r, node.c);
+                        
+                        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                        line.setAttribute("x1", start.x);
+                        line.setAttribute("y1", start.y);
+                        line.setAttribute("x2", end.x);
+                        line.setAttribute("y2", end.y);
+                        
+                        // adjacency violation validation check
+                        const neighbors = getNeighborsCoordsList(parent.r, parent.c);
+                        const isNeighbor = neighbors.some(([nr, nc]) => nr === node.r && nc === node.c);
+                        
+                        line.setAttribute("class", `link-line ${isNeighbor ? '' : 'violation'}`);
+                        linksGroup.appendChild(line);
+                    }
+                });
+            });
+
+            // Draw hexagon node containers
+            placedNodes.forEach(node => {
+                const pos = getPixelCoords(node.r, node.c);
+                const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                
+                let classes = `placed-hex cat-${node.category}`;
+                if (node.id === selectedNodeId) classes += " selected";
+                
+                // check adjacency violation
+                let hasViolation = false;
+                if (!node.isStart && node.parents.length > 0) {
+                    hasViolation = node.parents.some(pName => {
+                        const parent = allNodes.find(p => p.id === pName);
+                        if (!parent || parent.r === null) return true;
+                        const nbrs = getNeighborsCoordsList(parent.r, parent.c);
+                        return !nbrs.some(([nr, nc]) => nr === node.r && nc === node.c);
+                    });
+                }
+                if (hasViolation) classes += " violation";
+
+                g.setAttribute("class", classes);
+                g.setAttribute("transform", `translate(${pos.x}, ${pos.y})`);
+                
+                // Polygon shape
+                const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+                let pts = [];
+                for (let i = 0; i < 6; i++) {
+                    const angle = Math.PI / 180 * (60 * i - 30);
+                    pts.push(`${HEX_SIZE * Math.cos(angle)},${HEX_SIZE * Math.sin(angle)}`);
+                }
+                poly.setAttribute("points", pts.join(" "));
+                g.appendChild(poly);
+
+                // Image Logo icon
+                if (node.logo) {
+                    const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+                    img.setAttribute("href", node.logo);
+                    img.setAttribute("x", -HEX_SIZE * 0.35);
+                    img.setAttribute("y", -HEX_SIZE * 0.45);
+                    img.setAttribute("width", HEX_SIZE * 0.7);
+                    img.setAttribute("height", HEX_SIZE * 0.7);
+                    img.setAttribute("pointer-events", "none");
+                    g.appendChild(img);
+                }
+
+                // Label Text
+                if (node.name) {
+                    const txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    txt.textContent = node.name;
+                    txt.setAttribute("text-anchor", "middle");
+                    txt.setAttribute("dominant-baseline", "central");
+                    txt.setAttribute("y", node.logo ? (HEX_SIZE * 0.35) : 0);
+                    
+                    // Dynamic scaling text sizes
+                    let fs = HEX_SIZE * 0.22;
+                    if (node.name.length > 15) fs = HEX_SIZE * 0.13;
+                    else if (node.name.length > 10) fs = HEX_SIZE * 0.17;
+                    txt.setAttribute("font-size", fs);
+                    txt.setAttribute("pointer-events", "none");
+                    txt.setAttribute("style", "font-family:'Outfit', sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; fill:#fff;");
+                    g.appendChild(txt);
+                }
+
+                // Events
+                g.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    selectNode(node.id);
+                });
+
+                // drag grid nodes
+                g.setAttribute("draggable", "true");
+                g.addEventListener("dragstart", (e) => {
+                    draggedNodeId = node.id;
+                });
+
+                nodesGroup.appendChild(g);
+            });
+        }
+
+        // Neighbors calculations
+        function getNeighborsCoordsList(r, c) {
+            let additional = (r % 2 === 0) ? -1 : 1;
+            return [
+                [r, c+1],
+                [r, c-1],
+                [r-1, c],
+                [r+1, c],
+                [r-1, c+additional],
+                [r+1, c+additional]
+            ];
+        }
+
+        // Render Unplaced list cards
+        function renderUnplacedList() {
+            const container = document.getElementById("unplacedList");
+            container.innerHTML = '';
+
+            const unplaced = allNodes.filter(n => n.r === null || n.c === null);
+
+            unplaced.forEach(node => {
+                const card = document.createElement("div");
+                card.className = "node-card";
+                card.setAttribute("draggable", "true");
+                card.addEventListener("dragstart", () => {
+                    draggedNodeId = node.id;
+                });
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="node-card-name">${node.name}</div>
+                        <div class="node-card-cat">${node.category}</div>
+                    </div>
+                    <div style="font-size:0.7rem; color:var(--grey)">SP: ${node.cost}</div>
+                `;
+
+                card.addEventListener("click", () => selectNode(node.id));
+
+                container.appendChild(card);
+            });
+        }
+
+        function filterUnplaced() {
+            const query = document.getElementById("nodeSearch").value.toLowerCase();
+            const cards = document.querySelectorAll("#unplacedList .node-card");
+            
+            cards.forEach(card => {
+                const name = card.querySelector(".node-card-name").textContent.toLowerCase();
+                if (name.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Drop handling
+        function handleDropOnCell(r, c) {
+            if (!draggedNodeId) return;
+            const node = allNodes.find(n => n.id === draggedNodeId);
+            if (!node) return;
+
+            // Check if cell occupied
+            const occupiedNode = allNodes.find(n => n.r === r && n.c === c);
+            if (occupiedNode) {
+                alert("Cell is already occupied!");
+                draggedNodeId = null;
+                return;
+            }
+
+            node.r = r;
+            node.c = c;
+            draggedNodeId = null;
+
+            renderNodes();
+            renderUnplacedList();
+            
+            if (node.id === selectedNodeId) {
+                selectNode(node.id);
+            }
+        }
+
+        function handleCellClick(r, c) {
+            // If we click an empty cell while a node is selected, move it
+            if (selectedNodeId) {
+                const node = allNodes.find(n => n.id === selectedNodeId);
+                if (node && !node.isStart) {
+                    const occupiedNode = allNodes.find(n => n.r === r && n.c === c);
+                    if (!occupiedNode) {
+                        node.r = r;
+                        node.c = c;
+                        renderNodes();
+                        selectNode(node.id);
+                    }
+                }
+            }
+        }
+
+        // Add silent spacer path nodes
+        function addSilentNode() {
+            const id = `silent_${silentCounter++}`;
+            const newNode = {
+                id: id,
+                name: "Path",
+                r: null,
+                c: null,
+                logo: null,
+                cost: 0,
+                parents: [],
+                isStart: false,
+                isSetPiece: false,
+                category: "spacer"
+            };
+
+            allNodes.push(newNode);
+            renderUnplacedList();
+            selectNode(id);
+        }
+
+        // Selection & Inspector
+        function selectNode(id) {
+            selectedNodeId = id;
+            const node = allNodes.find(n => n.id === id);
+            if (!node) return;
+
+            renderNodes();
+
+            // Populate inspector
+            document.getElementById("inspectId").value = node.id;
+            document.getElementById("inspectName").value = node.name;
+            document.getElementById("inspectCost").value = node.cost;
+            document.getElementById("inspectCategory").value = node.category;
+            document.getElementById("inspectLogo").value = node.logo || '';
+
+            // Generate dependencies list checkboxes (all other placed nodes)
+            const depContainer = document.getElementById("dependencyListContainer");
+            depContainer.innerHTML = '';
+            
+            const otherPlaced = allNodes.filter(n => n.id !== id && n.r !== null && n.c !== null);
+            otherPlaced.forEach(other => {
+                const item = document.createElement("div");
+                item.className = "dependency-item";
+                
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = node.parents.includes(other.id);
+                checkbox.addEventListener("change", (e) => {
+                    if (e.target.checked) {
+                        if (!node.parents.includes(other.id)) node.parents.push(other.id);
+                    } else {
+                        node.parents = node.parents.filter(p => p !== other.id);
+                    }
+                    renderNodes();
+                });
+
+                const label = document.createElement("span");
+                label.textContent = `${other.name} (${other.id})`;
+
+                item.appendChild(checkbox);
+                item.appendChild(label);
+                depContainer.appendChild(item);
+            });
+
+            document.getElementById("inspectorPanel").classList.add("active");
+        }
+
+        function deselectNode() {
+            selectedNodeId = null;
+            renderNodes();
+            document.getElementById("inspectorPanel").classList.remove("active");
+        }
+
+        function updateSelectedNodeProp(prop, val) {
+            if (!selectedNodeId) return;
+            const node = allNodes.find(n => n.id === selectedNodeId);
+            if (node) {
+                node[prop] = val;
+                renderNodes();
+                // Update text on cards in sidebar
+                if (prop === 'name' || prop === 'category' || prop === 'cost') {
+                    renderUnplacedList();
+                }
+            }
+        }
+
+        function removeSelectedNode() {
+            if (!selectedNodeId) return;
+            const node = allNodes.find(n => n.id === selectedNodeId);
+            if (node) {
+                if (node.isStart) {
+                    alert("Cannot remove the Start core node!");
+                    return;
+                }
+
+                // If silent node, option to delete entirely
+                if (node.id.startsWith('silent_')) {
+                    if (confirm("Delete this silent node completely?")) {
+                        allNodes = allNodes.filter(n => n.id !== selectedNodeId);
+                        // Remove as parent from other nodes
+                        allNodes.forEach(n => {
+                            n.parents = n.parents.filter(p => p !== selectedNodeId);
+                        });
+                        deselectNode();
+                        renderNodes();
+                        renderUnplacedList();
+                        return;
+                    }
+                }
+
+                node.r = null;
+                node.c = null;
+                deselectNode();
+                renderNodes();
+                renderUnplacedList();
+            }
+        }
+
+        function resetLayout() {
+            if (confirm("Are you sure you want to clear coordinates for all nodes except Start?")) {
+                allNodes.forEach(n => {
+                    if (!n.isStart) {
+                        n.r = null;
+                        n.c = null;
+                    }
+                });
+                deselectNode();
+                renderNodes();
+                renderUnplacedList();
+                centerOnNode("Start");
+            }
+        }
+
+        // Export Modal actions
+        function showExport(type) {
+            const modal = document.getElementById("exportModal");
+            const title = document.getElementById("modalTitle");
+            const textarea = document.getElementById("modalTextarea");
+            const downloadBtn = document.getElementById("downloadBtn");
+
+            let dataStr = '';
+            let filename = '';
+
+            if (type === 'skills') {
+                title.textContent = "Export skills.json";
+                filename = "skills.json";
+                
+                // Map all nodes back to simple config format, excluding Start spacer dependencies if any
+                const exportObj = {
+                    nodes: allNodes.map(n => ({
+                        id: n.id,
+                        name: n.name,
+                        r: n.r,
+                        c: n.c,
+                        logo: n.logo,
+                        cost: n.cost,
+                        parents: n.parents,
+                        isStart: n.isStart,
+                        isSetPiece: n.isSetPiece,
+                        category: n.category
+                    }))
+                };
+                dataStr = JSON.stringify(exportObj, null, 2);
+
+            } else if (type === 'deps') {
+                title.textContent = "Export dependencies.json";
+                filename = "dependencies.json";
+                
+                const exportList = allNodes.map(n => ({
+                    id: n.id,
+                    name: n.name,
+                    dependencies: n.parents
+                }));
+                dataStr = JSON.stringify(exportList, null, 2);
+
+            } else if (type === 'fallback') {
+                title.textContent = "Export skillsData.js";
+                filename = "skillsData.js";
+                
+                const exportObj = {
+                    nodes: allNodes.map(n => ({
+                        id: n.id,
+                        name: n.name,
+                        r: n.r,
+                        c: n.c,
+                        logo: n.logo,
+                        cost: n.cost,
+                        parents: n.parents,
+                        isStart: n.isStart,
+                        isSetPiece: n.isSetPiece,
+                        category: n.category
+                    }))
+                };
+                dataStr = "window.skillsDataFallback = " + JSON.stringify(exportObj, null, 2) + ";";
+            }
+
+            textarea.value = dataStr;
+            
+            // Set up download click
+            downloadBtn.onclick = () => {
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = filename;
+                a.click();
+                URL.revokeObjectURL(url);
+            };
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById("exportModal").style.display = 'none';
+        }
+
+        function copyModalContent() {
+            const textarea = document.getElementById("modalTextarea");
+            textarea.select();
+            document.execCommand("copy");
+            alert("Copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
