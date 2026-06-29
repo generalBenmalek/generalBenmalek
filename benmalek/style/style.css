@@ -1977,6 +1977,7 @@ body.light-mode .project-placeholder {
     width: 2px;
     height: 30px;
     background-color: #444;
+    z-index: 122;
 }
 
 .lamp-body {
@@ -1992,6 +1993,7 @@ body.light-mode .project-placeholder {
     height: 16px;
     background: linear-gradient(to bottom, #d4af37, #8b7355);
     clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+    z-index: 1001;
 }
 
 .lamp-bulb {
@@ -2002,11 +2004,13 @@ body.light-mode .project-placeholder {
     border-radius: 50%;
     background-color: #222;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
 }
 
 body.light-mode .lamp-bulb {
     background-color: #fffbdf;
     box-shadow: 0 0 10px #fff, 0 0 20px #d4af37;
+    z-index: 1000;
 }
 
 .lamp-rope-group {
@@ -2017,11 +2021,12 @@ body.light-mode .lamp-bulb {
     pointer-events: auto;
     transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-origin: top center;
+    translate: 0 -50px;
 }
 
 .lamp-rope {
     width: 1px;
-    height: 70px;
+    height: 120px;
     background-color: #777;
     border-left: 1px dashed rgba(255, 255, 255, 0.2);
 }
