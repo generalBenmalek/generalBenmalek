@@ -16,8 +16,13 @@
     "Designed a layered architecture with CLI and Tkinter GUI interfaces, application services, domain security rules, and infrastructure modules for networking, storage, and package management.",
     "Built a multi-segment download manager powered by aria2 with pause/resume support, persistent download recovery, and automated observer-driven installation workflows."
   ],
-  "path_report": null,
+  "path_report": "benmalek/reports/sud_report.pdf",
   "path_video": null,
   "images": [],
-  "youtube_videos": []
+  "youtube_videos": [
+    {
+        "name": "SUD Demo",
+        "url": "https://youtu.be/chS73pOlthw"
+    }
+  ]
 }

@@ -20,7 +20,12 @@ function addXP(amount) {
     while (playerXP >= xpToNextLevel) {
         playerXP -= xpToNextLevel;
         playerLevel++;
-        skillPoints += 3;
+        if (typeof window.addSkillPoints === 'function') {
+            window.addSkillPoints(3);
+        } else {
+            skillPoints += 3;
+            updateSkillPoints();
+        }
         xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
         showLevelUp();
     }
@@ -303,6 +308,14 @@ function lose() {
     const earnedXP = Math.floor(score);
     const earnedSP = Math.floor(score / 500);
     addXP(earnedXP);
+    if (earnedSP > 0) {
+        if (typeof window.addSkillPoints === 'function') {
+            window.addSkillPoints(earnedSP);
+        } else {
+            skillPoints += earnedSP;
+            updateSkillPoints();
+        }
+    }
 
     if (score > bestScore) {
         bestScore = score;

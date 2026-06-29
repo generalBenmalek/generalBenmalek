@@ -19,8 +19,13 @@
     "Built an end-to-end encrypted real-time messaging system enabling secure communication between contract participants.",
     "Integrated local and cloud persistence using MongoDB, Firebase, Hive, and Isar to support secure synchronization and offline access."
   ],
-  "path_report": null,
+  "path_report": "benmalek/reports/yack_report.pdf",
   "path_video": null,
   "images": [],
-  "youtube_videos": []
+  "youtube_videos": [
+    {
+        "name": "YACK Demo",
+        "url": "https://youtu.be/B4Dw0tFmuaU"
+    }
+  ]
 }

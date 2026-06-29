@@ -17,5 +17,11 @@
   "path_report": null,
   "path_video": null,
   "images": [],
-  "youtube_videos": []
+  "youtube_videos": [],
+  "project_url": [
+    {
+      "name": "TaskIt Website",
+      "url": "https://www.taskit.software/"
+    }
+  ]
 }

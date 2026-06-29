@@ -1,4 +1,4 @@
-// Projects Dynamic Loader & Modal Handler
+// Projects Loader & Sidebar Navigator
 const projectIds = [
     "1_esia_impact_chatbot",
     "2_appliance_power_classification",
@@ -17,140 +17,202 @@ let loadedProjects = {};
 
 document.addEventListener("DOMContentLoaded", () => {
     loadProjects();
-    setupModal();
 });
 
 async function loadProjects() {
-    const grid = document.querySelector(".projects-grid");
-    if (!grid) return;
-    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; font-size: 1.5rem; font-family: \'Cinzel\', serif;">⚔ GATHERING PROJECT RUNES... ⚔</div>';
+    const sidebar = document.getElementById("projectsSidebar");
+    if (!sidebar) return;
+
+    // Preserve the title, clear dynamic items
+    const titleEl = sidebar.querySelector(".sidebar-title");
+    sidebar.innerHTML = "";
+    if (titleEl) sidebar.appendChild(titleEl);
 
     try {
-        const fetches = projectIds.map(id => 
-            fetch(`projects/${id}.json`)
-                .then(res => {
-                    if (!res.ok) throw new Error(`Failed to load ${id}`);
-                    return res.json();
-                })
-        );
-        
-        const projects = await Promise.all(fetches);
-        grid.innerHTML = ""; // Clear loader
-        
-        projects.forEach(p => {
+        let projects;
+        try {
+            const fetches = projectIds.map(id =>
+                fetch(`projects/${id}.json`)
+                    .then(res => {
+                        if (!res.ok) throw new Error(`Failed to load ${id}`);
+                        return res.json();
+                    })
+            );
+            projects = await Promise.all(fetches);
+        } catch (fetchErr) {
+            console.warn("Fetch projects failed, trying fallback data:", fetchErr);
+            if (window.projectsDataFallback) {
+                projects = window.projectsDataFallback;
+            } else {
+                throw new Error("Projects data fallback not found");
+            }
+        }
+
+        projects.forEach((p, idx) => {
             loadedProjects[p.id] = p;
-            grid.appendChild(createProjectCard(p));
+            
+            const item = document.createElement("div");
+            item.className = "sidebar-item";
+            item.setAttribute("data-project-id", p.id);
+            item.innerHTML = `<span class="sidebar-item-number">${idx + 1}.</span>${p.title}`;
+            item.addEventListener("click", () => selectProject(p.id));
+            sidebar.appendChild(item);
         });
+
+        // Auto-select first project
+        if (projects.length > 0) {
+            selectProject(projects[0].id);
+        }
     } catch (err) {
         console.error("Error loading projects:", err);
-        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #ff6b6b; font-family: \'Cinzel\', serif;">❌ ERROR GATHERING RUNES. DEFEAT.</div>';
+        const errDiv = document.createElement("div");
+        errDiv.style.padding = "20px";
+        errDiv.style.color = "#ff6b6b";
+        errDiv.style.fontFamily = "'Cinzel', serif";
+        errDiv.style.textAlign = "center";
+        errDiv.textContent = "❌ ERROR GATHERING QUESTS";
+        sidebar.appendChild(errDiv);
     }
 }
 
-function createProjectCard(p) {
-    const card = document.createElement("div");
-    card.className = "project-card";
-    card.setAttribute("data-project-id", p.id);
-    card.addEventListener("click", () => openProjectModal(p.id));
-
-    const tagsHtml = p.technologies.slice(0, 4).map(tech => `<span class="project-tag">${tech}</span>`).join("");
-
-    card.innerHTML = `
-        <div class="project-title">${p.title}</div>
-        <div class="project-description">${p.description}</div>
-        <div class="project-tags">${tagsHtml}${p.technologies.length > 4 ? '<span class="project-tag" style="background:transparent; border:1px solid var(--border-color); color:var(--text-color)">+ ' + (p.technologies.length - 4) + '</span>' : ''}</div>
-    `;
-    return card;
-}
-
-function setupModal() {
-    const modal = document.getElementById("projectModal");
-    const closeBtn = document.getElementById("modalCloseBtn");
-    const backdrop = document.getElementById("modalBackdrop");
-
-    if (!modal) return;
-
-    const closeHandler = () => {
-        modal.classList.remove("active");
-    };
-
-    closeBtn.addEventListener("click", closeHandler);
-    backdrop.addEventListener("click", closeHandler);
-}
-
-function openProjectModal(id) {
+function selectProject(id) {
     const p = loadedProjects[id];
     if (!p) return;
 
-    const modal = document.getElementById("projectModal");
-    if (!modal) return;
-
-    // Set Text Details
-    document.getElementById("modalTitle").textContent = p.title;
-    document.getElementById("modalSubtitle").textContent = p.subtitle;
-    document.getElementById("modalDescription").textContent = p.description;
-
-    // Set Technologies
-    const tagsContainer = document.getElementById("modalTags");
-    tagsContainer.innerHTML = p.technologies.map(tech => `<span class="project-tag">${tech}</span>`).join("");
-
-    // Set Achievements Bullet points
-    const achContainer = document.getElementById("modalAchievements");
-    achContainer.innerHTML = p.achievements.map(ach => `<li>${ach}</li>`).join("");
-
-    // Set Action Button (Report/PDF Download)
-    const actionsContainer = document.getElementById("modalActions");
-    actionsContainer.innerHTML = "";
-
-    if (p.path_report) {
-        const btn = document.createElement("a");
-        btn.className = "modal-btn";
-        btn.href = p.path_report;
-        btn.target = "_blank";
-        btn.innerHTML = `<i class="fi fi-rr-download" style="margin-right: 8px;"></i> View Project Report (PDF)`;
-        actionsContainer.appendChild(btn);
-    } else {
-        const btn = document.createElement("button");
-        btn.className = "modal-btn";
-        btn.disabled = true;
-        btn.style.opacity = "0.5";
-        btn.style.cursor = "not-allowed";
-        btn.innerHTML = `No Report File Attached`;
-        actionsContainer.appendChild(btn);
-    }
-
-    // Set Media Preview Area (Video embed or placeholder)
-    const galleryContainer = document.getElementById("modalGallery");
-    if (p.youtube_videos && p.youtube_videos.length > 0) {
-        // Embed YouTube video
-        const videoId = getYouTubeId(p.youtube_videos[0]);
-        if (videoId) {
-            galleryContainer.innerHTML = `
-                <iframe width="100%" height="200" src="https://www.youtube.com/embed/${videoId}" 
-                        title="YouTube video player" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen style="border: 2px solid var(--border-color);"></iframe>
-            `;
+    // Highlight active sidebar item
+    document.querySelectorAll(".sidebar-item").forEach(item => {
+        if (item.getAttribute("data-project-id") === id) {
+            item.classList.add("active");
         } else {
-            galleryContainer.innerHTML = `<div style="text-align: center;"><i class="fi fi-rr-picture" style="font-size: 2.5rem; display: block; margin-bottom: 10px;"></i>No media assets available</div>`;
+            item.classList.remove("active");
         }
-    } else if (p.path_video) {
-        // Embed Local Video
-        galleryContainer.innerHTML = `
-            <video width="100%" height="200" controls style="border: 2px solid var(--border-color); background: #000;">
-                <source src="${p.path_video}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+    });
+
+    const detailContainer = document.getElementById("projectDetail");
+    if (!detailContainer) return;
+
+    const technologies = Array.isArray(p.technologies) ? p.technologies : [];
+    const achievements = Array.isArray(p.achievements) ? p.achievements : [];
+    const youtubeVideos = Array.isArray(p.youtube_videos) ? p.youtube_videos : [];
+    const images = Array.isArray(p.images) ? p.images : [];
+    const projectUrls = Array.isArray(p.project_url) ? p.project_url : [];
+
+    // Build Technologies HTML
+    const tagsHtml = technologies.map(tech => `<span class="project-tag">${tech}</span>`).join("");
+
+    // Build Achievements HTML
+    const achievementsHtml = achievements.map(ach => `<li>${ach}</li>`).join("");
+
+    // Build Project Links HTML
+    const projectLinksHtml = projectUrls.length > 0 ? `
+        <div class="project-detail-section">
+            <h3>Project Links</h3>
+            <div class="project-links">
+                ${projectUrls.map(link => {
+                    if (typeof link === "string") {
+                        return `<a href="${link}" target="_blank" rel="noopener noreferrer" class="project-link-btn">${link}</a>`;
+                    }
+
+                    const linkUrl = link.url || "";
+                    const linkLabel = link.name || link.title || linkUrl;
+                    return `<a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="project-link-btn">${linkLabel}</a>`;
+                }).join("")}
+            </div>
+        </div>
+    ` : "";
+
+    // Build Media HTML
+    let mediaHtml = "";
+
+    // 1. PDF Report Embed & Download
+    if (p.path_report) {
+        mediaHtml += `
+            <div class="project-pdf-container">
+                <iframe src="${p.path_report}"></iframe>
+            </div>
+            <a href="${p.path_report}" download class="project-download-btn">
+                <i class="fi fi-rr-download" style="margin-right: 8px;"></i> Download PDF Report
+            </a>
         `;
-    } else {
-        galleryContainer.innerHTML = `<div style="text-align: center;"><i class="fi fi-rr-picture" style="font-size: 2.5rem; display: block; margin-bottom: 10px;"></i>No media assets available</div>`;
     }
 
-    // Open Modal
-    modal.classList.add("active");
+    // 2. Video Player (YouTube or Local)
+    if (youtubeVideos.length > 0) {
+        youtubeVideos.forEach(video => {
+            const videoUrl = typeof video === "string" ? video : video.url;
+            const videoLabel = typeof video === "string" ? "" : (video.name || video.title || "");
+            const videoId = getYouTubeId(videoUrl);
+            if (videoId) {
+                mediaHtml += `
+                    ${videoLabel ? `<div class="project-media-label">${videoLabel}</div>` : ""}
+                    <div class="project-video-container">
+                        <iframe src="https://www.youtube.com/embed/${videoId}" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                `;
+            }
+        });
+    } else if (p.path_video) {
+        mediaHtml += `
+            <div class="project-video-container">
+                <video controls>
+                    <source src="${p.path_video}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        `;
+    }
+
+    // 3. Image Gallery
+    if (images.length > 0) {
+        mediaHtml += `
+            <div class="project-image-gallery">
+                ${images.map(img => `<img src="${img}" alt="${p.title} Screenshot" onclick="window.open('${img}', '_blank')">`).join("")}
+            </div>
+        `;
+    }
+
+    // Default media placeholder if empty
+    if (!p.path_report && youtubeVideos.length === 0 && !p.path_video && images.length === 0) {
+        mediaHtml = `<div class="project-no-media">No media assets available for this quest.</div>`;
+    }
+
+    // Render details
+    detailContainer.innerHTML = `
+        <div class="project-detail-header">
+            <h2 class="project-detail-title">${p.title}</h2>
+            <div class="project-detail-subtitle">${p.subtitle || ""}</div>
+            <div class="project-detail-tags">${tagsHtml}</div>
+        </div>
+
+        <div class="project-detail-section">
+            <h3>Description</h3>
+            <p class="project-detail-description">${p.description}</p>
+        </div>
+
+        <div class="project-detail-section">
+            <h3>Key Achievements</h3>
+            <ul class="project-detail-achievements">
+                ${achievementsHtml}
+            </ul>
+        </div>
+
+        ${projectLinksHtml}
+
+        <div class="project-detail-section">
+            <h3>Quest Media & Report</h3>
+            ${mediaHtml}
+        </div>
+    `;
+
+    // Scroll detail container back to top
+    detailContainer.scrollTop = 0;
 }
 
 function getYouTubeId(url) {
+    if (typeof url !== "string") return null;
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
     return (match && match[2].length === 11) ? match[2] : null;
